@@ -33,6 +33,6 @@ Através da necessidade existente no campos, foi pensando em desenvolver um sist
 ### Orientadores:
  ![LinkedIn](https://img.shields.io/badge/-LinkedIn-0077B5?style=for-the-badge&logo=LinkedIn&logoColor=white) https://www.linkedin.com/in/irlan-arley-30564996/
  
- ![LinkedIn](https://img.shields.io/badge/-LinkedIn-0077B5?style=for-the-badge&logo=LinkedIn&logoColor=white) https://www.linkedin.com/in/irlan-arley-30564996/
+ ![LinkedIn](https://img.shields.io/badge/-LinkedIn-0077B5?style=for-the-badge&logo=LinkedIn&logoColor=white) https://www.linkedin.com/in/raphael-muniz-95a35174/
  
- ![LinkedIn](https://img.shields.io/badge/-LinkedIn-0077B5?style=for-the-badge&logo=LinkedIn&logoColor=white) https://www.linkedin.com/in/irlan-arley-30564996/
+ ![LinkedIn](https://img.shields.io/badge/-LinkedIn-0077B5?style=for-the-badge&logo=LinkedIn&logoColor=white) https://www.linkedin.com/in/thiago-henrique-freire-de-oliveira-09900829/
