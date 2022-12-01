@@ -1,0 +1,60 @@
+{% extends 'modelo.html' %}
+{% load static %}
+
+{%block title%}
+<title>Formulário</title>
+{%endblock%}
+
+<link rel="stylesheet" type="text/css" href="static 'css/form.css'">
+{%block conteudo%}
+<body>
+    <nav>
+        <ul class="nav justify-content-end">
+            <li class="nav-item">
+                <a class="nav-link" href="#descricao">Contato</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Voltar</a>
+            </li>
+        </ul>
+    </nav>
+
+    <header>
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col">
+                    <br>
+                    <h1>Formulário</h1>
+                </div>
+                <div class="col">
+                    <img src="img/banner de formularios.png" width="80%">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="titulo">
+        <h3>Cadastrar Novo Tipo de Laboratório</h3>
+    </div>
+
+    <form method="post">
+        <fieldset>
+            <div>
+                <div class="form-group">
+                    <label>Tipo de laboratório</label><br>
+                    <input class="form-control" type="text" name="name" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1">Descrição</label>
+                    <textarea class="form-control" name="description" rows="5"></textarea>
+                </div>
+
+        </fieldset>
+
+        <button type="button" class="btn btn-outline-info">Enviar</button>
+
+    </form>
+
+</body>
+{%endblock%}
+</html>

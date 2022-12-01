@@ -1,0 +1,33 @@
+{% extends 'modelo.html' %}
+{% load static %}
+
+{%block title%}
+<title>Login</title>
+{%endblock%}
+{%block conteudo%}
+<link rel="stylesheet_login" type="text/css" href="{%static 'css/login.css' %}">
+<body>
+    <div class="main-login">
+
+        <div class="rigth-login">
+            <div class="card-login">
+                <div class="textfield">
+                    <label for = "usuario">Usuário</label>
+                    <input type="text" name="usuario" placeholder="Usúario">
+                </div>
+
+                <div class="textfield">
+                    <label for = "senha">Senha</label>
+                    <input type="password" name="senha" placeholder="Senha">
+                </div>
+                <button class="btn-login">Login</button>
+            </div>
+
+            <img src="{% static 'img/login.gif' %}">
+            
+        </div>
+        
+    </div>
+</body>
+{%endblock%}
+</html>
