@@ -40,7 +40,12 @@ INSTALLED_APPS = [
     #ativando os módulos páginas e cadastros.
     'paginas.apps.PaginasConfig',
     'cadastros.apps.CadastrosConfig',
+    'crispy_forms',
+    'usuarios.apps.UsuariosConfig',
 ]
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

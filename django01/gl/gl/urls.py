@@ -16,7 +16,10 @@ Including another URLconf
     path('cadastrar_lab/', include('paginas.urls')),
     path('cadastrar_sala/', include('paginas.urls')),
     path('cadastrar_usuario/', include('paginas.urls')),
-    
+    path('login/', include('paginas.urls')),
+    path('cadastrar_lab/', include('paginas.urls')),
+    path('cadastrar_sala/', include('paginas.urls')),
+    path('cadastrar_usuario/', include('paginas.urls')),
 """
 from django.contrib import admin
 from django.urls import path, include
@@ -24,10 +27,7 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('paginas.urls')),
-    path('login/', include('paginas.urls')),
     path('', include('cadastros.urls')),
-    path('cadastrar_lab/', include('paginas.urls')),
-    path('cadastrar_sala/', include('paginas.urls')),
-    path('cadastrar_usuario/', include('paginas.urls')),
+    
 
 ]

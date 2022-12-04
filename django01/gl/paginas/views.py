@@ -15,6 +15,9 @@ class Cadastrar_salaView(TemplateView):
 class Cadastrar_usuarioView(TemplateView):
     template_name = "cadastrar_usuario.html"
 
+class InformaticaView(TemplateView):
+    template_name = "informatica"
+
 
 
 
