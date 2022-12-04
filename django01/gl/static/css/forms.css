@@ -1,0 +1,27 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.titulo{ 
+    margin: 10px 80px;
+}
+form{
+    margin: 10px 270px;
+}
+label{
+    margin-top: 20px;
+}
+.btn{
+    margin: 5% 45%;
+}
+
+
+@media (max-width:900px){
+    form{
+        margin: 30px;
+    }
+    .btn{
+        margin: 5% 42%;
+    }
+    
+}

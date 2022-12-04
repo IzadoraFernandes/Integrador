@@ -10,7 +10,7 @@
 + Bloco/local que pertence
 
 #### Qual a necessidade de criar este sistema?
-Através da necessidade existente no campos, foi pensando em desenvolver um sistema em que os professores possam fazer o agendamento e reserva de horários dos laboratórios, visto que este processo atualmente é executado por um funcionário e que os professores não tem um controle ou acompanhamento de como esta as reservas das salas.
+Através da necessidade existente no campus, foi pensando em desenvolver um sistema em que os professores possam fazer o agendamento e reserva de horários dos laboratórios, visto que este processo atualmente é executado por um funcionário e que os professores não tem total controle sobre os mesmo, sendo necessário passar por um funcionário que realiza os agendamentos solicitados.
 
 #### Com este projeto os professores poderão:
 - Vê uma agenda de horários 📋
@@ -24,9 +24,9 @@ Através da necessidade existente no campos, foi pensando em desenvolver um sist
   <tr> 
     <td> Html 5 </td>
     <td> Css </td>
+    <td> JavaScript</td>
     <td> Django </td>
     <td> Python </td>
-    <td> Java Script</td>
     </tr>
 </table>
 
