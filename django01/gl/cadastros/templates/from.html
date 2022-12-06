@@ -1,50 +1,18 @@
-{% extends 'models.html' %}
-{% load static %}
-
-{% block title %}
-<title>Formulário</title>
-{% endblock %}
-
-{% block conteudo %}
-<h1>Cadastro</h1>
-
-<nav>
-    <ul class="nav justify-content-end">
-        <li class="nav-item">
-            <a class="nav-link" href="#descricao">Contato</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Voltar</a>
-        </li>
-    </ul>
-</nav>
-
-<header>
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col">
-                <br>
-                <h1>Formulário</h1>
-            </div>
-            <div class="col">
-                <img src="{% static 'img/banner_de_formularios.png' %}" width="80%">
-            </div>
-        </div>
-    </div>
-</header>
-
-<div class="titulo">
-    <h3>Cadastrar Novo Tipo de Laboratório</h3>
-</div>
-
-<form  action="" method="POST">
-    {% csrf_token %}
-
-    {{ form.as_p}}
-
-    <button type="submit" class="btn btn-primary">Cadastrar</button>
-</form>
-
-
-
-{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+</head>
+<body>
+    oooooooooiiiiiiiiii
+<ul>
+   {%for sala in sala %}
+   <li> {{sala.id}}  - {{sala.nome}} </li>
+    {%endfor%}  
+</ul>
+   
+</body>
+</html>

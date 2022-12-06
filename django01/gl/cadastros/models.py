@@ -1,4 +1,6 @@
 from django.db import models
+from django.urls import reverse_lazy
+
 
 class Sala(models.Model):
     nome = models.CharField(max_length = 50)
@@ -18,4 +20,6 @@ class Reserva(models.Model):
 
     #
     def __str__(self):
-        return "{} ({})".format(self.nome, self.campo)
+        return "{} ({})".format(self.nome, self.Sala)
+
+
