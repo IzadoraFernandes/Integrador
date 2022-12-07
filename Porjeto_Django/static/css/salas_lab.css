@@ -1,0 +1,20 @@
+.card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #2095ff;
+}
+
+h2,
+h6 {
+    color: white;
+}
+
+.salas {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 5px;
+    justify-content: center;
+}
