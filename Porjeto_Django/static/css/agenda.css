@@ -1,0 +1,8 @@
+.informacaosala{
+    display: flex; 
+    justify-content: space-between; 
+    background-color: #2095ff; 
+    color: white;
+    padding: 5px 14px;
+    border-radius: 10px;
+}

@@ -1,5 +1,7 @@
 from django.shortcuts import render
 
+
+
 def cadastrar_lab(request):
     return render(request, 'cadastrar_lab.html')
 
@@ -20,7 +22,6 @@ def apicultura(request):
 
 def quimica(request):
     return render(request, 'quimica.html')
-
 
 
 

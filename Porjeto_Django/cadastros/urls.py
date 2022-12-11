@@ -9,5 +9,7 @@ urlpatterns = [
     path ('alimentos/', views.alimentos, name='alimentos'),
     path ('apicultura/', views.apicultura, name='apicultura'),
     path ('quimica/', views.quimica, name='quimica'),
+
+   
     
 ]

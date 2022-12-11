@@ -18,16 +18,25 @@
    align-items: center;
    margin-top: 20px;
 }
+
 footer{
     background-color: #2095ff;
 }
 @media (max-width: 1100px){
     .descricao{
-        width: 50%;
-       margin-left: 250px;
+        width: 65%;
+        margin-left: 90px;
+    }
+    .logorodape{
+        width: 20%;
     }
 }
 
 .col img{
     width: 300px;
+}
+a,
+a:visited,
+a:active {
+  color: white;
 }

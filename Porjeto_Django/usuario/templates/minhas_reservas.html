@@ -41,23 +41,50 @@
 
 
     <section class="container">
-            <div class="card mb-3" style="max-width: 80rem; flex-direction: row; display: flex; justify-content: space-around;">
-                <div class="card-body">
-                    <h5 class="card-title">Nome do Laboratório</h5>
-                </div>
-                <div class="card-body">
-                    <h6 class="card-title">Data</h6>
-                    <h6 class="card-title">Horário</h6>
-                </div>
-                <div class="card-footer bg-transparent align-items-center">
-                    <img src="{% static 'img/lixeira.png' %}">
-                        <img src="{% static 'img/lapis.png' %}">
-                </div>
+        <div class="card mb-3"
+            style="max-width: 80rem; flex-direction: row; display: flex; justify-content: space-around;">
+            <div class="card-body">
+                <h5 class="card-title">Nome do Laboratório</h5>
+            </div>
+            <div class="card-body">
+                <h6 class="card-title">Data</h6>
+                <h6 class="card-title">Horário</h6>
+            </div>
+            <div class="card-footer bg-transparent align-items-center">
+                <img src="{% static 'img/lixeira.png' %}">
+                <img src="{% static 'img/lapis.png' %}">
+            </div>
     </section>
 
 </body>
+
+<footer class="d-flex flex-wrap justify-content-between align-items-center py-3 mt-4 border-top">
+    <img class="logorodape" src="{% static 'img/Logo.png' %}" width="7%">
+
+    <a href="/"
+        class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
+        <svg class="bi me-2" width="40" height="32">
+            <use xlink:href="#bootstrap" />
+        </svg>
+    </a>
+
+    <ul class="nav col-md-4 justify-content-end">
+        <img src="{% static 'img/gmail.png'%}">
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Ifrn_pf@gmail.com<a></li>
+        <img src="{% static 'img/telefone.png'%}">
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Telefone</a></li>
+        <img src="{% static 'img/instagram.png'%}">
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Instagram</a></li>
+        <img src="{% static 'img/facebook.png'%}">
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Facebook</a></li>
+        <img src="{% static 'img/local.png'%}">
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Localização</a></li>
+    </ul>
+</footer>
+
 <!-- JavaScript Bundle with Popper -->
 <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
-    <script src="{% static 'js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'js/popper.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/popper.min.js' %}"></script>
+
 </html>
