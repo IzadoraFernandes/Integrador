@@ -44,22 +44,63 @@
         <h3>Cadastrar Reserva de Horário</h3>
     </div>
 
-    <form method="post">{% csrf_token %}
+    <form method="POST"> 
         <fieldset>
             <div>
+
+                <div style="display: flex; justify-content: space-between;">
+                    <div class="form-group">
+                        <select name="Horário">
+                            <option value="horário">Selecione o Horário</option>
+                            <option value="1">07:00 - 07:45</option>
+                            <option value="2">07:45 - 08:30</option>
+                            <option value="3">08:50 - 09:35</option>
+                            <option value="4">09:35 - 10:20</option>
+                            <option value="5">10:30 - 11:15</option>
+                            <option value="6">11:15 - 12:00</option>
+    
+                            <option value="7">13:00 - 13:45</option>
+                            <option value="8">13:45 - 14:30</option>
+                            <option value="9">14:50 - 15:35</option>
+                            <option value="10">15:35 - 16:20</option>
+                            <option value="11">16:30 - 17:15</option>
+                            <option value="12">17:15 - 18:00</option>
+    
+                            <option value="13">19:00 - 19:45</option>
+                            <option value="14">19:45 - 20:30</option>
+                            <option value="15">20:40 - 21:25</option>
+                            <option value="16">21:25 - 22:10</option>
+    
+                          </select>
+                    </div>
+
+                    <div class="form-group">
+                        <input id="date" type="date">
+                    </div>
+
+
                 <div class="form-group">
-                    <label>Tipo de laboratório</label><br>
-                    <input class="form-control" type="text" name="name" id="name" required>
+                        <select name="Número da sala - Nome da sala">
+                            <option value="sala">Selecione o Local</option>
+                            <option value="56">56 - LABORATÓRIO DE INFORMÁTICA I</option>
+                            <option value="57">57 - LABORATÓRIO DE INFORMÁTICA II</option>
+                            <option value="58">58 - LABORATÓRIO DE INFORMÁTICA III</option>
+                            <option value="60">56 - LABORATÓRIO DE REDES</option>
+                            <option value="61">57 - LABORATÓRIO DE ELETRÔNICA</option>
+                            <option value="65">58 - LABORATÓRIO DE INFORMÁTICA IV</option>
+                        </select>
                 </div>
+
                 <div class="form-group">
                     <label for="exampleFormControlTextarea1">Descrição</label>
                     <textarea class="form-control" name="description" rows="5"></textarea>
                 </div>
+            </div>
 
         </fieldset>
 
-        <input type="submit" value="enviar">
-
+        <button type="button" class="btn btn-outline-info">Enviar</button>
+    
     </form>
 
 </body>
