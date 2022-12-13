@@ -17,10 +17,7 @@
     <nav>
         <ul class="nav justify-content-end">
             <li class="nav-item">
-                <a class="nav-link" href="#">Contato</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'menu_sala' %}">Sair</a>
+                <a class="nav-link" href="{% url 'menu_salas' %}">Sair</a>
             </li>
         </ul>
     </nav>
@@ -58,7 +55,7 @@
 
 </body>
 
-<footer class="d-flex flex-wrap justify-content-between align-items-center py-3 mt-4 border-top">
+<footer id="rodape" class="d-flex flex-wrap justify-content-between align-items-center py-3 mt-4 border-top">
     <img class="logorodape" src="{% static 'img/Logo.png' %}" width="7%">
 
     <a href="/"

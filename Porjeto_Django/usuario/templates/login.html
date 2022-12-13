@@ -1,6 +1,7 @@
 {%load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,22 +9,21 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
     <title>Login</title>
 </head>
+
 <body>
-    <div class="main-login">
-        <div class="rigth-login">
-            <div class="card-login">
-                <div class="textfield">
-                    <label for="usuario">Usuário</label>
-                    <input type="text" name="usuario" placeholder="Usúario">
-                </div>
-                <div class="textfield">
-                    <label for="senha">Senha</label>
-                    <input type="password" name="senha" placeholder="Senha">
-                </div>
-                <button class="btn-login">Login</button>
-            </div>
-            <img src="{% static 'img/login.gif' %}">
+
+    <div id="login-box">
+        <div class="left">
+            <img src="{% static 'img/login.gif' %}" width="140%">
         </div>
+        <div class="right">
+            <input type="text" name="email" placeholder="E-mail" />
+            <input type="password" name="password" placeholder="Password" />
+            <input type="submit" name="signup_submit" value="login" />
+        </div>
+
     </div>
+
 </body>
+
 </html>

@@ -1,111 +1,118 @@
-body 
-{
-    margin: 10%;
-    background-image: linear-gradient(to right, #2095ff, #d9d9d9  );
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,500);
+*:focus {
+  outline: none;
 }
 
-.main-login
-{
-    width: 100%; /*100% da largura*/
-    height: 100%; /*100% da altura*/
-    display: flex;
-    justify-content: center;
-    align-items: center;
+body {
+  margin: 0;
+  padding: 0;
+  background-image: linear-gradient(to right, #2095ff, #d9d9d9);
+  color: black;
+  font-family: "Roboto", sans-serif;
 }
 
-.left-login
-{
-    width: 50%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+#login-box {
+  position: relative;
+  margin: 10% auto;
+  width: 700px;
+  height: 390px;
+  background: #fff;
+  border-radius: 2px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
 }
 
-.rigth-login
-{
-    width: 50%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.left {
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  padding: 40px;
+  width: 300px;
+  height: 390px;
+  background-color: white;
 }
 
-.card-login
-{
-    width: 90%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    padding: 47px 80px;
-    background: #d9d9d9a2;
+input[type="text"],
+input[type="password"] {
+  display: block;
+  margin-bottom: 20px;
+  padding: 4px;
+  width: 220px;
+  height: 32px;
+  border: none;
+  border-bottom: 1px solid black;
+  color: black;
+  background: none;
 }
 
-.textfield
-{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    margin: 5px;
+input[type="text"]:focus,
+input[type="password"]:focus {
+  border-bottom: 2px solid black;
+  color: black;
+  transition: 0.2s ease;
 }
 
-.textfield input{
-    width: 100%;
-    border: none;
-    border-radius: 10px;
-    padding: 10px;
-    background: #fff;
-    color: #f0ffffde;
-    font-size: 12pt;
-    outline: none;
-}
-.rigth-login img
-{
-    width: 74% !important; 
-}
-
-.textfield label
-{
-    margin-bottom: 15px;
+input[type="submit"] {
+  margin-top: 28px;
+  width: 120px;
+  height: 32px;
+  background: #2095ff;
+  border: none;
+  border-radius: 10px;
+  color: #fff;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  text-transform: uppercase;
+  transition: 0.1s ease;
+  cursor: pointer;
 }
 
-.btn-login
-{
-    width: 50%;
-    padding: 16px 0px;
-    margin: 50px;
-    border: none;
-    border-radius: 8px;
-    outline: none;
-    text-transform: uppercase; /*deixar todas as letras maiúsculas*/
-    font-weight: 800; /*deixar a letra em negrito*/
-    letter-spacing: 2px; /*espaçamento entre as letras*/
-    background: #2095FF;
-    cursor: pointer;
+input[type="submit"]:hover,
+input[type="submit"]:focus {
+  opacity: 0.8;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  transition: 0.1s ease;
 }
 
-/* @media (min-width: 1000px){
+input[type="submit"]:active {
+  opacity: 1;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  transition: 0.1s ease;
+}
 
-.card-login {
-    width: 67%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    padding: 18px 55px;
-    background: #D9D9D9;
+.right {
+  position: absolute;
+  top: 0;
+  right: 0;
+  box-sizing: border-box;
+  padding: 120px 70px;
+  width: 350px;
+  height: 390px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 0 2px 2px 0;
+  background-color: #d9d9d9c5;
 }
-.rigth-login {
-    width: 54.8%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-} */
 
-.col img {
-    width: 30%;
+@media (min-width: 100px) and (max-width: 770px) {
+  #login-box {
+    width: 0.1%;
+    background:none;
+    margin-top: 200px;
+    left: 25%;
+    transform: translate(-25%, -25%);
+  }
+  .left{
+    display: none; 
+  }
 }
+@media (max-width: 570px) {
+    #login-box {
+      margin-top: 120px;
+      left: 38%;
+      transform: translate(-10%, -10%);
+    }
+    .left{
+      display: none; 
+    }
+  }

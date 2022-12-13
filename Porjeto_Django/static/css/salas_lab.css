@@ -1,20 +1,25 @@
 .card {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    background-color: #2095ff;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: #2095ff;
 }
 
 h2,
 h6 {
-    color: white;
+  color: white;
 }
-
+#rodape {
+  background-color: #2095ff;
+}
+.linkrodape {
+  color: white !important;
+}
 .salas {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    width: 100%;
-    gap: 5px;
-    justify-content: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 5px;
+  justify-content: center;
 }
