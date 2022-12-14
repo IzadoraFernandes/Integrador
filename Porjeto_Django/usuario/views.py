@@ -8,3 +8,6 @@ def login(request):
 
 def minhas_reservas(request):
     return render(request, 'minhas_reservas.html')
+
+def usuarios(request):
+    return render(request, 'usuarios.html')

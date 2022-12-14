@@ -1,4 +1,8 @@
+{% extends 'modelo_footer.html' %}
+
 {%load static%}
+
+{% block head %}
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -15,7 +19,8 @@
 
     <title>Salas</title>
 </head>
-
+{%endblock%}
+{% block conteudo%}
 <style>
     .laboratorios {
         display: flex;
@@ -95,18 +100,7 @@
     </section>
 </body>
 
-<footer id="rodape" class="d-flex flex-wrap justify-content-between align-items-center py-3 mt-4 border-top">
-    <img class="logorodape" src="{% static 'img/Logo.png' %}" width="7%">
-    <ul class="nav col-md-4 justify-content-between">
-        <li class="nav-item"><a href="https://portal.ifrn.edu.br/campus/paudosferros/novos-ramais.html"
-                class="linkrodape nav-link px-2">Emails<a></li>
-        <li class="nav-item"><a href="https://www.instagram.com/ifrnpaudosferros/"
-                class="linkrodape nav-link px-2">Instagram</a></li>
-        <li class="nav-item"><a href="https://twitter.com/ifrnpdf" class="linkrodape nav-link px-2">Twitter</a></li>
-        <li class="nav-item"><a href="https://www.google.com/maps/dir/-6.1409809,-38.2005265/ifrn+campus+pau+dos+ferros+localiza%C3%A7%C3%A3o/@-6.1426921,-38.2051289,17z/data=!3m1!4b1!4m9!4m8!1m1!4e1!1m5!1m1!1s0x7a4ccc390b80df9:0x6f19062e132788ca!2m2!1d-38.2045783!2d-6.1462578"
-                class="linkrodape nav-link px-2">Localização</a></li>
-    </ul>
-</footer>
+{%endblock%}
 
 <!-- JavaScript Bundle with Popper -->
 <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
