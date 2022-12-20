@@ -1,31 +1,70 @@
-* {
-  margin: 0;
-  padding: 0;
-}
-.titulo {
-  margin: 10px 80px;
-}
-form {
-  margin: 10px 270px;
-}
-label {
-  margin-top: 20px;
-}
-.btn {
-  margin: 5% 45%;
-}
-#rodape {
-  background-color: #2095ff;
-}
-.linkrodape {
-  color: white !important;
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,500);
+*:focus {
+  outline: none;
 }
 
-@media (max-width: 900px) {
-  form {
-    margin: 30px;
+body {
+  margin: 0;
+  padding: 0;
+  color: black;
+  font-family: "Roboto", sans-serif;
+}
+
+#login-box {
+  position: relative;
+  margin: auto;
+  width: 1000px;
+  height: 580px;
+  background: #fff;
+  border-radius: 2px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.left {
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  padding: 40px;
+  width: 500px;
+  height: 580px;
+  background-color: white;
+}
+.right {
+  position: absolute;
+  top: 0;
+  right: 0;
+  box-sizing: border-box;
+  padding: 120px 70px;
+  width: 500px;
+  height: 580px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 0 2px 2px 0;
+  background-color: #2095ff;
+}
+
+.botao{
+  display: flex;
+  margin: 30px 175px;
+}
+
+@media (min-width: 100px) and (max-width: 770px) {
+  .left{
+    width: 400px;
+    height: 540px;
+    border-radius: 2px;
+    box-shadow: 0 2px 4px rgba(0.5, 0.5, 0.5, 0.5);
   }
-  .btn {
-    margin: 5% 42%;
+  .botao{
+    margin: 40px 115px;
+  }
+  .right{
+   display: none;
+  }
+  #login-box{
+   width: 450px;
+   height: 90px;
+   box-shadow: none;
   }
 }

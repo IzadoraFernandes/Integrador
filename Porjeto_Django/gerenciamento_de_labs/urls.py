@@ -21,4 +21,5 @@ urlpatterns = [
     path('', include ('cadastros.urls'), name='cadastro'),
     path('', include ('paginas.urls'), name='paginas'),
     path('', include ('usuario.urls'), name='usuario'),
+    path("__reload__/", include("django_browser_reload.urls")),
 ]

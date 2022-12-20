@@ -17,6 +17,7 @@
 
 </head>
 {%endblock%}
+
 <body>
     {%block conteudo%}
     <nav>
@@ -27,60 +28,51 @@
         </ul>
     </nav>
 
-    <header>
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col">
-                    <br>
-                    <h1>Formulário</h1>
-                </div>
-                <div class="col">
-                    <img src="{% static 'img/banner_de_formularios.png' %}" width="80%">
-                </div>
-            </div>
-        </div>
-    </header>
 
-    <div class="titulo">
-        <h3>Cadastrar Nova sala</h3>
-    </div>
-
-    <form method="post">
+    <form method="POST">{% csrf_token %}
         <fieldset>
-            <div>
-                <div class="form-group">
-                    <label>Nome da sala</label><br>
-                    <input class="form-control" type="text" name="room_name" id="name" required>
-                </div>
-
-                <div style="display: flex; justify-content: space-between;">
+            <div id="login-box">
+                <div class="left">
+                    <h3>Cadastrar Nova sala</h3>
                     <div class="form-group">
-                        <label>Capacidade</label><br>
-                        <input class="form-control" type="number" name="capacity" id="name" required>
-                    </div>
+                        <label>Nome da sala</label><br>
+                        <input class="form-control" type="text" name="room_name" id="name" required>
+                    </div><br>
 
-                    <div class="form-group">
-                        <label>Número da sala</label><br>
-                        <input class="form-control" type="number" name="room_number" id="name" required>
-                    </div>
+                    <div style="display: flex; justify-content: space-between;">
+                        <div class="form-group">
+                            <label>Capacidade</label><br>
+                            <input class="form-control" type="number" name="capacity" id="name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Número da sala</label><br>
+                            <input class="form-control" type="number" name="room_number" id="name" required>
+                        </div>
+                    </div><br>
 
                     <div class="form-group">
                         <label>Bloco</label><br>
                         <input class="form-control" type="text" name="block" id="name" required>
+                    </div><br>
+
+
+                    <div class="form-group">
+                        <label for="exampleFormControlTextarea1">Descrição</label>
+                        <textarea class="form-control" name="description" rows="5"></textarea>
                     </div>
+                    <button type="button" class="botao btn btn-outline-info">Enviar</button>
+                </div>
+                <div class="right">
+                    <img src="{% static 'img/banner_de_formularios.png' %}" width="100%">
                 </div>
 
-                <div class="form-group">
-                    <label for="exampleFormControlTextarea1">Descrição</label>
-                    <textarea class="form-control" name="description" rows="5"></textarea>
-                </div>
-
+            </div>
         </fieldset>
 
-        <button type="button" class="btn btn-outline-info">Enviar</button>
 
     </form>
-{%endblock%}
+    {%endblock%}
 </body>
 
 </html>

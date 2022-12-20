@@ -18,22 +18,30 @@
 
 </head>
 {%endblock%}
+
 <body>
     {% block conteudo%}
 
     <nav>
-        <ul class="nav justify-content-end">
-            <li class="nav-item">
-                <a class="nav-link" href="{%url 'menu_salas' %}">Inicio</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'cadastrar_reserva' %}">Adicionar reservas</a>
-            </li>
-            <li class="nav-item">
-                <a href="{% url 'minhas_reservas' %}" class="nav-link">Minhas reservas</a>
-            </li>
+        <div class="barranav">
+            <div>
+                <img src="{% static 'img/Logo.png' %}" width="15%">
+            </div>
 
-        </ul>
+            <div class="linknav">
+                <div class="nav-item">
+                    <a class="nav-link" href="{%url 'menu_salas' %}">Inicio</a>
+                </div>
+                <div class="nav-item">
+                    <a class="nav-link" href="{% url 'cadastrar_reserva' %}">Adicionar reservas</a>
+                </div>
+                <div class="nav-item">
+                    <a href="{% url 'minhas_reservas' %}" class="nav-link">Minhas reservas</a>
+                </div>
+
+            </div>
+
+        </div>
     </nav>
 
     <header>
@@ -274,7 +282,7 @@
             </tr>
         </tbody>
     </table>
-{%endblock%}
+    {%endblock%}
 
 </body>
 

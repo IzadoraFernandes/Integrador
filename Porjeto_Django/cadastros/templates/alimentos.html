@@ -27,19 +27,17 @@
     {% block conteudo%}
 
     <header>
-        <div class="container" style="padding: 10px;">
-            <div class="row align-items-center">
-                <div class="col">
-                    <br>
-                    <h2>Um Software de Gerenciamento Laboratorial</h2>
+        <div class="cabecalho">
+                <div class="titulo">
+                    <h1>Um Software de Gerenciamento Laboratorial</h1>
                 </div>
-                <div class="col">
-                    <img src="{% static 'img/notebook.png' %}" width="80%">
+                <div class="imgheader">
+                    <img src="{% static 'img/notebook.png' %}" width="50%">
                 </div>
-            </div>
         </div>
     </header>
 
+   
     <section class="container">
         <h3>Laboratórios de Alimentos</h3><br>
         <div class="salas">
@@ -62,23 +60,23 @@
                 </a>
                 <div>
                     <a href="{% url 'agenda' %}">
-                    <div class="card mb-3" style="max-width: 25rem;">
-                        <div class="card-body">
-                            <h2 class="card-title">82</h2>
-                        </div>
-                        <div class="card-body">
-                            <h6 class="card-title">LABORATÓRIO DE PROCESSAMENTO DE LEITE E DERIVADOS</h6>
-                            <h6 class="card-title">BLOCO 03 LABORATÓRIOS</h6>
+                        <div class="card mb-3" style="max-width: 25rem;">
+                            <div class="card-body">
+                                <h2 class="card-title">82</h2>
+                            </div>
+                            <div class="card-body">
+                                <h6 class="card-title">LABORATÓRIO DE PROCESSAMENTO DE LEITE E DERIVADOS</h6>
+                                <h6 class="card-title">BLOCO 03 LABORATÓRIOS</h6>
 
+                            </div>
+                            <div class="card-body">
+                                <img src="{% static 'img/lixeira.png' %}">
+                                <img src="{% static 'img/lapis.png' %}">
+                            </div>
                         </div>
-                        <div class="card-body">
-                            <img src="{% static 'img/lixeira.png' %}">
-                            <img src="{% static 'img/lapis.png' %}">
-                        </div>
-                    </div>
                     </a>
                 </div>
-                
+
                 <div>
                     <a href="{% url 'agenda' %}">
                         <div class="card mb-3" style="max-width: 25rem;">
@@ -99,7 +97,7 @@
                     </a>
 
                 </div>
-                
+
             </div>
 
             <div>
@@ -124,14 +122,14 @@
 
             </div>
 
-            </div>
+        </div>
         </div>
 
         </div>
 
     </section>
     </section>
-{%endblock%}
+    {%endblock%}
 </body>
 
 <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>

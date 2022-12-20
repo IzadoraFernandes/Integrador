@@ -29,31 +29,17 @@
         </ul>
     </nav>
 
-    <header>
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col">
-                    <br>
-                    <h1>Formulário</h1>
-                </div>
-                <div class="col">
-                    <img src="{% static 'img/banner_de_formularios.png' %}" width="80%">
-                </div>
-            </div>
-        </div>
-    </header>
 
-    <div class="titulo">
-        <h3>Cadastrar Reserva de Horário</h3>
-    </div>
 
-    <form method="POST"> 
+    <form method="post">{% csrf_token %}
         <fieldset>
-            <div>
-                <div>
+
+            <div id="login-box">
+                <div class="left">
+                    <h3>Cadastrar Reserva de Horário</h3>
                     <div class="form-group">
                         <label for="">Horário</label>
-                        <select class="form-control" name="Horário">
+                        <select class="form-control" name="Horário" required>
                             <option selected disabled value="horário">Selecione</option>
                             <option value="1">07:00 - 07:45</option>
                             <option value="2">07:45 - 08:30</option>
@@ -61,31 +47,31 @@
                             <option value="4">09:35 - 10:20</option>
                             <option value="5">10:30 - 11:15</option>
                             <option value="6">11:15 - 12:00</option>
-    
+
                             <option value="7">13:00 - 13:45</option>
                             <option value="8">13:45 - 14:30</option>
                             <option value="9">14:50 - 15:35</option>
                             <option value="10">15:35 - 16:20</option>
                             <option value="11">16:30 - 17:15</option>
                             <option value="12">17:15 - 18:00</option>
-    
+
                             <option value="13">19:00 - 19:45</option>
                             <option value="14">19:45 - 20:30</option>
                             <option value="15">20:40 - 21:25</option>
                             <option value="16">21:25 - 22:10</option>
-    
-                          </select>
-                    </div>
+
+                        </select>
+                    </div><br>
 
                     <div class="form-group">
                         <label for="">Data</label>
-                        <input class="form-control" id="date" type="date">
-                    </div>
+                        <input class="form-control" id="date" type="date" required>
+                    </div><br>
 
-                <div class="form-group">
-                    <label for="">Número da sala - Nome da sala</label>
+                    <div class="form-group">
+                        <label for="">Número da sala - Nome da sala</label>
                         <select class="form-control" name="Número da sala - Nome da sala">
-                            <option selected disabled value="sala">Selecione</option>
+                            <option selected disabled value="sala">Selecione</option required>
                             <option value="56">56 - LABORATÓRIO DE INFORMÁTICA I</option>
                             <option value="57">57 - LABORATÓRIO DE INFORMÁTICA II</option>
                             <option value="58">58 - LABORATÓRIO DE INFORMÁTICA III</option>
@@ -93,21 +79,23 @@
                             <option value="61">57 - LABORATÓRIO DE ELETRÔNICA</option>
                             <option value="65">58 - LABORATÓRIO DE INFORMÁTICA IV</option>
                         </select>
-                </div>
-                
+                    </div><br>
 
-                <div class="form-group">
-                    <label for="">Descrição</label>
-                    <textarea class="form-control" name="description" rows="5"></textarea>
+                    <div class="form-group">
+                        <label for="">Descrição</label>
+                        <textarea class="form-control" name="description" rows="5"></textarea>
+                    </div>
+                    <button type="button" class="botao btn btn-outline-info">Enviar</button>
                 </div>
+                <div class="right">
+                    <img src="{% static 'img/banner_de_formularios.png' %}" width="100%"><br>
+                </div>
+
             </div>
-
         </fieldset>
 
-        <button type="button" class="btn btn-outline-info">Enviar</button>
-    
     </form>
-{%endblock%}
+    {%endblock%}
 </body>
 
 </html>
