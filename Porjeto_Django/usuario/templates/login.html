@@ -17,9 +17,12 @@
             <img src="{% static 'img/login.gif' %}" width="140%">
         </div>
         <div class="right">
-            <input type="text" name="email" placeholder="E-mail" />
-            <input type="password" name="password" placeholder="Password" />
-            <input type="submit" name="signup_submit" value="login" />
+            <form method="POST"> 
+                {% csrf_token %}
+                <input type="text" name="email" placeholder="E-mail" />
+                <input type="password" name="password" placeholder="Password" />
+                <input type="submit" name="signup_submit" value="{{next}}" />
+            </form> 
         </div>
 
     </div>

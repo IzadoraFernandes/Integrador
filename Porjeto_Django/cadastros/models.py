@@ -5,10 +5,10 @@ from django.urls import reverse_lazy
 class Sala(models.Model):
     nome = models.CharField(max_length = 50)
     numero = models.IntegerField(verbose_name= "Número")
-    descricao = models.CharField(max_length= 200, verbose_name="Descrição")
+    bloco = models.CharField(max_length= 50, verbose_name="Bloco")
 
     def __str__(self):
-        return "{} ({})".format(self.nome, self.descricao)
+        return "{} ({})".format(self.nome, self.bloco)
 
 class Reserva(models.Model):
     nome = models.CharField(max_length=50)

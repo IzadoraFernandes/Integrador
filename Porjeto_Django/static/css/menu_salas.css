@@ -10,6 +10,10 @@ h2 {
   margin-left: 72px;
 }
 
+#rodape {
+  background-color: #2095ff;
+}
+
 .cabecalho {
   display: flex;
   flex-direction: row;

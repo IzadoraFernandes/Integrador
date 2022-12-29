@@ -1,3 +1,5 @@
+
+
 {% extends 'modelo_footer.html' %}
 
 {%load static%}
@@ -20,6 +22,7 @@
 {%endblock%}
 
 <body>
+
     {% block conteudo%}
     <nav>
         <ul class="nav justify-content-end">
@@ -30,49 +33,30 @@
     </nav>
 
 
-    <form method="POST" action=""> {% csrf_token %}
-        <fieldset>
-            <div id="login-box">
-                <div class="left">
-                    <h3>Cadastro de Usuários</h3>
-                    <div class="form-group">
-                        <label>Nome completo</label><br>
-                        <input class="form-control" type="text" name="username" id="username" required>
-                    </div><br>
-                    <div style="display: flex; justify-content: space-between;">
-                        <div class="form-group">
-                            <label>Matrícula</label><br>
-                            <input class="form-control" type="numbe" name="registration" id="registration" required>
-                        </div>
+    <form method="POST" action=""> 
+        
+        {% csrf_token %}
+        <div.form-content form-content-grid> 
+            {% for field in form %}
 
-                        <div class="form-group">
-                            <label>Cargo</label><br>
-                            <select class="form-control" name="cargo" required>
-                                <option selected disabled value="">Selecione</option>
-                                <option>Funcionário da COAP</option>
-                                <option>Professor</option>
-                            </select>
-                        </div>
-                    </div><br>
+                <div class = "form-group">
 
+                    <label for = "{{ field.id_for_label}}"> {{ field.label}} </label>
+                    {{field}}
 
-                    <div class="form-group">
-                        <label>E-mail:</label><br>
-                        <input class="form-control" type="email" name="email" id="email" required>
-                    </div><br>
+                    {% if field.help_text %}
+                        <p class = "help_text"> {{ field.help_text}} </p>
+                    {% endif %}
 
-                    <div class="form-group">
-                        <label>Senha</label><br>
-                        <input class="form-control" type="password" name="password" id="password" required>
-                    </div>
-                    <button type="button" class="botao btn btn-outline-info">Enviar</button>
-
+                    {{field.errors}}
                 </div>
+        
+            {%endfor%}
+        </div>
+        <div class = "from-group"> 
+            <button type= "submit"> Enviar </button>
+        </div>
 
-                <div class="right">
-                    <img src="{% static 'img/banner_de_formularios.png' %}" width="100%"><br>
-                </div>
-        </fieldset>
     </form>
 
 </body>
