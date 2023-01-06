@@ -7,5 +7,6 @@ urlpatterns = [
     path ('login/', views.login, name='login'),
     path ('minhas_reservas/', views.minhas_reservas, name='minhas_reservas'),
     path ('usuarios/', views.usuarios, name='usuarios'),
+    path("register/", views.register, name="register"),
     path("__reload__/", include("django_browser_reload.urls")),
 ]

@@ -13,7 +13,6 @@ class Sala(models.Model):
 class Reserva(models.Model):
     nome = models.CharField(max_length=50)
     capacidade = models.IntegerField
-    numero = models.IntegerField(verbose_name= "Número")
     bloco = models.IntegerField
     descricao = models.CharField(max_length= 200, verbose_name="Descrição")
     data = models.DateField(blank='False', null='False')
@@ -29,4 +28,6 @@ class Laboratorio(models.Model):
     bloco = models.IntegerField
     descricao = models.CharField(max_length= 200, verbose_name="Descrição")
 
+    def __str__(self):
+        return "{} - {}".format(self.nome, self.descricao)
 

@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,  redirect
 from .forms import RegisterForm
 
 def cadastrar_usuario(request):
@@ -10,6 +10,18 @@ def cadastrar_usuario(request):
         'form' : form,
     })
 
+def register(response):
+
+        if response.method == "POST":
+            form = RegisterForm(response.POST)
+            if form.is_valid():
+                form.save()
+
+            return redirect("/index")
+        else:
+            form = RegisterForm()
+
+        return render(response, "register/register.html", {"form":form})
 
 def login(request):
     return render(request, 'login.html')

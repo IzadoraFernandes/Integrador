@@ -137,3 +137,4 @@ LOGOUT_REDIRECT_URL = '/login'
 
 LOGIN_REDIRECT_URL = '/menu_salas'
 
+# AUTH_USER_MODEL = 'usuario.CreateUser' erro
