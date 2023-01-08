@@ -4,10 +4,14 @@
 
 {%endblock%}
 
+{% if user.is_authenticated %}
+        {% block conteudo%}
 
-{% block conteudo%}
+        {%endblock%}
+{% else %}
+<p>Login <a href="/login">Login</a></p>
+{% endif %}
 
-{%endblock%}
 
 <footer id="rodape" class="d-flex flex-wrap justify-content-between align-items-center py-3 mt-4 border-top">
     <img class="logorodape" src="{% static 'img/Logo.png' %}" width="5%">

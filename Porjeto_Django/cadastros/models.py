@@ -1,8 +1,9 @@
 from django.db import models
 from django.urls import reverse_lazy
+from braces.views import GroupRequiredMixin
 
-
-class Sala(models.Model):
+class Sala(GroupRequiredMixin, models.Model):
+    group_required = u"Coapac"
     nome = models.CharField(max_length = 50)
     numero = models.IntegerField(verbose_name= "Número")
     bloco = models.CharField(max_length= 50, verbose_name="Bloco")
@@ -10,7 +11,8 @@ class Sala(models.Model):
     def __str__(self):
         return "{} ({})".format(self.nome, self.bloco)
 
-class Reserva(models.Model):
+class Reserva(GroupRequiredMixin, models.Model):
+    group_required = u"Professores"
     nome = models.CharField(max_length=50)
     capacidade = models.IntegerField
     bloco = models.IntegerField
@@ -23,7 +25,8 @@ class Reserva(models.Model):
     def __str__(self):
         return "{} ({})".format(self.nome, self.Sala)
 
-class Laboratorio(models.Model):
+class Laboratorio(GroupRequiredMixin, models.Model):
+    group_required = u"Coapac"
     nome = models.CharField(max_length = 50)
     bloco = models.IntegerField
     descricao = models.CharField(max_length= 200, verbose_name="Descrição")

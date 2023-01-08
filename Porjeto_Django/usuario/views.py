@@ -1,5 +1,7 @@
 from django.shortcuts import render,  redirect
 from .forms import RegisterForm
+#from django.contrib import messages
+from braces.views import GroupRequiredMixin
 
 def cadastrar_usuario(request):
     if request.POST:
@@ -17,11 +19,14 @@ def register(response):
             if form.is_valid():
                 form.save()
 
-            return redirect("/index")
+            return redirect("/login")
         else:
             form = RegisterForm()
 
         return render(response, "register/register.html", {"form":form})
+
+        
+
 
 def login(request):
     return render(request, 'login.html')
