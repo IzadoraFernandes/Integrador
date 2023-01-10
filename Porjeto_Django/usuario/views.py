@@ -1,7 +1,7 @@
 from django.shortcuts import render,  redirect
 from .forms import RegisterForm
 #from django.contrib import messages
-from braces.views import GroupRequiredMixin
+#from braces.views import GroupRequiredMixin
 
 def cadastrar_usuario(request):
     if request.POST:
