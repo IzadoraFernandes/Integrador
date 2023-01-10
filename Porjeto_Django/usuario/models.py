@@ -1,96 +1,55 @@
+from django.contrib.auth.models import User
 from django.db import models
-from django.contrib.auth.models import (
-    BaseUserManager, AbstractBaseUser
-)
+from django.contrib.auth.models import BaseUserManager, AbstractUser
+from django.db.models import signals
 
 
-class User(AbstractBaseUser):
-    email = models.EmailField(
-        verbose_name='email address',
-        max_length=255,
-        unique=True,
-    )
-    is_active = models.BooleanField(default=True)
-    staff = models.BooleanField(default=False) # a admin user; non super-user
-    admin = models.BooleanField(default=False) # a superuser
-
-    # notice the absence of a "Password field", that is built in.
-
-    USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = [] # Email & Password are required by default.
-
-    def get_full_name(self):
-        # The user is identified by their email address
-        return self.email
-
-    def get_short_name(self):
-        # The user is identified by their email address
-        return self.email
-
-    def __str__(self):
-        return self.email
-
-    def has_perm(self, perm, obj=None):
-        "Does the user have a specific permission?"
-        # Simplest possible answer: Yes, always
-        return True
-
-    def has_module_perms(self, app_label):
-        "Does the user have permissions to view the app `app_label`?"
-        # Simplest possible answer: Yes, always
-        return True
-
-    @property
-    def is_staff(self):
-        "Is the user a member of staff?"
-        return self.staff
-
-    @property
-    def is_admin(self):
-        "Is the user a admin member?"
-        return self.admin
 class UserManager(BaseUserManager):
-    def create_user(self, email, password=None):
-        """
-        Creates and saves a User with the given email and password.
-        """
+    use_in_migrations = True
+
+    def _create_user(self, email, password, **extra_fields):
         if not email:
-            raise ValueError('Users must have an email address')
-
-        user = self.model(
-            email=self.normalize_email(email),
-        )
-
+            raise ValueError("O e-mail é obrigatório")
+        email = self.normalize_email(email)
+        user = self.model(email=email, username=email, **extra_fields)
         user.set_password(password)
         user.save(using=self._db)
         return user
 
-    def create_staffuser(self, email, password):
-        """
-        Creates and saves a staff user with the given email and password.
-        """
-        user = self.create_user(
-            email,
-            password=password,
-        )
-        user.staff = True
-        user.save(using=self._db)
-        return user
+    def create_user(self, email, password=None, **extra_fields):
+        extra_fields.setdefault('is_superuser', False)
+        extra_fields.setdefault('is_staff', True)
+        return self._create_user(email, password, **extra_fields)
 
-    def create_superuser(self, email, password):
-        """
-        Creates and saves a superuser with the given email and password.
-        """
-        user = self.create_user(
-            email,
-            password=password,
-        )
-        user.staff = True
-        user.admin = True
-        user.save(using=self._db)
-        return user
+    def create_superuser(self, email, password, **extra_fields):
+        extra_fields.setdefault('is_superuser', True)
+        extra_fields.setdefault('is_staff', True)
 
-# hook in the New Manager to our Model
-class User(AbstractBaseUser): # from step 2
-    ...
+        if extra_fields.get('is_superuser') is not True:
+            raise ValueError('Superuser precisa ter is_superuser = True')
+        if extra_fields.get('is_staff') is not True:
+            raise ValueError('Superuser precisa ter is_staff = True')
+
+        return self._create_user(email, password, **extra_fields)
+
+
+class CustomUser(AbstractUser):
+
+    email = models.EmailField("E-mail", unique=True)
+    phone = models.CharField("Telefone", max_length=15)
+    is_staff = models.BooleanField('Membro da equipe', default=True)
+
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['first_name', 'last_name', 'phone']
+
+    def __str__(self):
+        return self.username
+
     objects = UserManager()
+
+
+def user_pre_save(signal, instance, sender, **kwargs):
+    instance.username = instance.email
+
+
+signals.pre_save.connect(user_pre_save, sender=CustomUser)

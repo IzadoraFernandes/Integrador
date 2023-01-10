@@ -1,34 +1,28 @@
-from django.contrib.auth.models import User
-from django import forms
-import re
-
-from  django  import  forms 
-from  django.contrib.auth.forms  import  UserCreationForm 
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm
+from .models import CustomUser
+from django.contrib import messages
 
 
-class RegisterForm(forms.ModelForm):
-    matricula = forms.CharField(required=True)
+class CustomUserCreateForm(UserCreationForm):
+
     class Meta:
-        model = User
-        fields = [
-            'first_name',
-            'last_name',
-            'username',
-            'email',
-            'password',
-        ]
+        model = CustomUser
+        fields = ('first_name', 'last_name', 'phone', 'email')
 
-        widget = {
-            'password': forms.PasswordInput(attrs={
-                'placeholder': 'Digite sua senha'
-            })
-        }
-    
-    #def strong_password(password):
-        #regex = re.compile(r'(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,}$')
+        def save(self, commit=True):
+            user: CustomUser = super().save(commit=False)
+            user.set_password(self.cleaned_data["password1"])
+            user.email = self.cleaned_data["email"]
+            user.username = user.email
+            if commit:
 
-        #if not regex.match(password):
-            #raise ValidationError((
-                #'Password must have at least onde '
-            #))
+                user.save()
 
+            return user
+
+
+class CustomUserChangeForm(UserChangeForm):
+
+    class Meta:
+        model = CustomUser
+        fields = ('first_name', 'last_name', 'phone')

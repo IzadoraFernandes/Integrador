@@ -1,29 +1,29 @@
 from django.shortcuts import render,  redirect
-from .forms import RegisterForm
+from .forms import CustomUserCreateForm
 #from django.contrib import messages
 #from braces.views import GroupRequiredMixin
 
 def cadastrar_usuario(request):
     if request.POST:
-        form = RegisterForm(request.POST)
+        form = CustomUserCreateForm(request.POST)
     else:
-        form = RegisterForm()
+        form = CustomUserCreateForm()
     return render(request, 'cadastrar_usuario.html', {
         'form' : form,
     })
 
-def register(response):
+def register_view(request):
 
-        if response.method == "POST":
-            form = RegisterForm(response.POST)
-            if form.is_valid():
-                form.save()
+    if request.POST:
+        form = CustomUserCreateForm(request.POST)
+        if form.is_valid():
+            form.save()
 
             return redirect("/login")
-        else:
-            form = RegisterForm()
+    else:
+        form = CustomUserCreateForm()
 
-        return render(response, "register/register.html", {"form":form})
+        return render(request, "register/register.html", {"form":form})
 
         
 

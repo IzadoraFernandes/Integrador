@@ -137,4 +137,4 @@ LOGOUT_REDIRECT_URL = '/register/login'
 
 LOGIN_REDIRECT_URL = '/menu_salas'
 
-# AUTH_USER_MODEL = 'usuario.CreateUser' erro
+AUTH_USER_MODEL = 'usuario.CustomUser' 
