@@ -27,31 +27,36 @@
         </ul>
     </nav>
 
-    <form method="post">{% csrf_token %}
+    <form method="post">
+        {% csrf_token %}
         <fieldset>
 
             <div id="login-box">
                 <div class="left">
                     <h3>Cadastrar Novo Tipo de Laboratório</h3>
                     <div class="form-group">
-                        <label>Nome</label><br>
-                        <input class="form-control" type="text" name="name" id="name" required>
+                        <label for="{{form.nome.id_for_label}}">{{form.nome.label}}</label>
+                        {{form.nome}}
+                     <!-- <input class="form-control" type="text" name="name" id="name" required> -->   
                     </div><br>
                     <div class="form-group">
-                        <label>Tipo</label><br>
-                        <select class="form-control" name="cargo" required>
+                        <!--<label>Tipo</label><br>
+                         <select class="form-control" name="cargo" required>
                             <option selected disabled value="">Selecione</option>
                             <option>Alimentos</option>
                             <option>Apicultura</option>
                             <option>Informática</option>
-                            <option>Química</option>
-                        </select>
+                            <option>Química</option> </select>
+                        {{form.tipo}}-->
                     </div><br>
                     <div class="form-group">
-                        <label for="exampleFormControlTextarea1">Descrição</label>
-                        <textarea class="form-control" name="description" rows="5"></textarea>
+                        <label for="{{form.nome.id_for_label}}">{{form.descricao.label}}</label>
+                        {{form.descricao}}
+
+                        <!-- <textarea class="form-control" name="description" rows="5"></textarea> -->
+                        
                     </div>
-                    <button type="button" class="botao btn btn-outline-info">Enviar</button>
+                    <button type="submit" class="botao btn btn-outline-info">Enviar</button>
                 </div>
                 <div class="right">
                     <img src="{% static 'img/banner_de_formularios.png' %}" width="100%"><br>

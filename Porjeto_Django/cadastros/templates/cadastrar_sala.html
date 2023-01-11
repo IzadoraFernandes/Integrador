@@ -1,8 +1,6 @@
-{% extends 'modelo_footer.html' %}
 
 {%load static%}
 
-{% block head %}
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -16,9 +14,8 @@
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
 
 </head>
-{%endblock%}
 
- {%block conteudo%}
+{%block conteudo%}
 <body>
    
     <nav>
@@ -36,33 +33,32 @@
                 <div class="left">
                     <h3>Cadastrar Nova sala</h3>
                     <div class="form-group">
-                        <label>Nome da sala</label><br>
-                        <input class="form-control" type="text" name="room_name" id="name" required>
+                        <label for="{{form.nome.id_for_label}}">{{form.nome.label}}</label><br>
+                        {{form.nome}}
                     </div><br>
 
                     <div style="display: flex; justify-content: space-between;">
                         <div class="form-group">
-                            <label>Capacidade</label><br>
-                            <input class="form-control" type="number" name="capacity" id="name" required>
+                            <label for="{{form.nome.id_for_label}}">{{form.capacidade.label}}</label><br>
+                            {{form.capacidade}}
                         </div>
 
                         <div class="form-group">
-                            <label>Número da sala</label><br>
-                            <input class="form-control" type="number" name="room_number" id="name" required>
+                            <label for="{{form.nome.id_for_label}}">{{form.numero.label}}</label><br>
+                            {{form.numero}}
                         </div>
                     </div><br>
 
                     <div class="form-group">
-                        <label>Bloco</label><br>
-                        <input class="form-control" type="text" name="block" id="name" required>
+                        <label for="{{form.nome.id_for_label}}">{{form.bloco.label}}</label><br>
+                            {{form.bloco}}
                     </div><br>
 
-
                     <div class="form-group">
-                        <label for="exampleFormControlTextarea1">Descrição</label>
-                        <textarea class="form-control" name="description" rows="5"></textarea>
+                        <label for="{{form.nome.id_for_label}}">{{form.descicao.label}}</label><br>
+                            {{form.descricao}}
                     </div>
-                    <button type="button" class="botao btn btn-outline-info">Enviar</button>
+                    <button type="submit" class="botao btn btn-outline-info">Enviar</button>
                 </div>
                 <div class="right">
                     <img src="{% static 'img/banner_de_formularios.png' %}" width="100%">
@@ -73,9 +69,7 @@
 
 
     </form>
-    
+  
 </body>
-{%endblock%}
-
-
+  {%endblock%}
 </html>

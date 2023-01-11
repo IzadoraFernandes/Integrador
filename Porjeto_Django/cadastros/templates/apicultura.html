@@ -26,12 +26,12 @@
     {% block conteudo%}
     <header>
         <div class="cabecalho">
-                <div class="titulo">
-                    <h1>Um Software de Gerenciamento Laboratorial</h1>
-                </div>
-                <div class="imgheader">
-                    <img src="{% static 'img/notebook.png' %}" width="50%">
-                </div>
+            <div class="titulo">
+                <h1>Um Software de Gerenciamento Laboratorial</h1>
+            </div>
+            <div class="imgheader">
+                <img src="{% static 'img/notebook.png' %}" width="50%">
+            </div>
         </div>
     </header>
 
@@ -39,50 +39,64 @@
         <h3>Laboratórios de Apicultura</h3><br>
         <div class="salas">
             <div>
-                <div class="card mb-3" style="max-width: 25rem;">
-                    <div class="card-body">
-                        <h2 class="card-title">89</h2>
-                    </div>
-                    <div class="card-body">
-                        <h6 class="card-title">LABORATÓRIO DE ABELHAS</h6>
-                        <h6 class="card-title">BLOCO 03 LABORATÓRIOS</h6>
+                <div>
+                    <a href="{% url 'agenda' %}">
+                        <div class="card mb-3" style="max-width: 25rem;">
+                            <div class="card-body">
+                                <h2 class="card-title">89</h2>
+                            </div>
+                            <div class="card-body">
+                                <h6 class="card-title">LABORATÓRIO DE ABELHAS</h6>
+                                <h6 class="card-title">BLOCO 03 LABORATÓRIOS</h6>
 
-                    </div>
-                    <div class="card-body">
-                        <img src="{% static 'img/lixeira.png' %}">
-                        <img src="{% static 'img/lapis.png' %}">
-                    </div>
+                            </div>
+                            <div class="card-body">
+                                <img src="{% static 'img/lixeira.png' %}">
+                                <img src="{% static 'img/lapis.png' %}">
+                            </div>
+                        </div>
+                    </a>
                 </div>
 
-                <div class="card mb-3" style="max-width: 25rem;">
-                    <div class="card-body">
-                        <h2 class="card-title">90</h2>
-                    </div>
-                    <div class="card-body">
-                        <h6 class="card-title">LABORATÓRIO DE PROCESSAMENTO DE PÓLEN E PRÓPOLIS</h6>
-                        <h6 class="card-title">BLOCO 03 LABORATÓRIOS</h6>
+                <div>
+                    <a href="{% url 'agenda' %}">
+                        <div class="card mb-3" style="max-width: 25rem;">
+                            <div class="card-body">
+                                <h2 class="card-title">90</h2>
+                            </div>
+                            <div class="card-body">
+                                <h6 class="card-title">LABORATÓRIO DE PROCESSAMENTO DE PÓLEN E PRÓPOLIS</h6>
+                                <h6 class="card-title">BLOCO 03 LABORATÓRIOS</h6>
 
-                    </div>
-                    <div class="card-body">
-                        <img src="{% static 'img/lixeira.png' %}">
-                        <img src="{% static 'img/lapis.png' %}">
-                    </div>
+                            </div>
+                            <div class="card-body">
+                                <img src="{% static 'img/lixeira.png' %}">
+                                <img src="{% static 'img/lapis.png' %}">
+                            </div>
+                        </div>
+                    </a>
                 </div>
 
-                <div class="card mb-3" style="max-width: 25rem;">
-                    <div class="card-body">
-                        <h2 class="card-title">91</h2>
-                    </div>
-                    <div class="card-body">
-                        <h6 class="card-title">LAB. DE ANÁLISE DE FÍSICO-QUÍMICA DE PROD APICOLAS E GELÉIA REAL</h6>
-                        <h6 class="card-title">BLOCO 03 LABORATÓRIOS</h6>
+                <div>
+                    <a href="{% url 'agenda' %}">
+                        <div class="card mb-3" style="max-width: 25rem;">
+                            <div class="card-body">
+                                <h2 class="card-title">91</h2>
+                            </div>
+                            <div class="card-body">
+                                <h6 class="card-title">LAB. DE ANÁLISE DE FÍSICO-QUÍMICA DE PROD APICOLAS E GELÉIA REAL
+                                </h6>
+                                <h6 class="card-title">BLOCO 03 LABORATÓRIOS</h6>
 
-                    </div>
-                    <div class="card-body">
-                        <img src="{% static 'img/lixeira.png' %}">
-                        <img src="{% static 'img/lapis.png' %}">
-                    </div>
+                            </div>
+                            <div class="card-body">
+                                <img src="{% static 'img/lixeira.png' %}">
+                                <img src="{% static 'img/lapis.png' %}">
+                            </div>
+                        </div>
+                    </a>
                 </div>
+
             </div>
 
 

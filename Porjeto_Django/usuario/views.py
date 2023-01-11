@@ -1,29 +1,25 @@
 from django.shortcuts import render,  redirect
 from .forms import CustomUserCreateForm
-#from django.contrib import messages
-#from braces.views import GroupRequiredMixin
+from django.views.generic import CreateView
+from django.urls import reverse_lazy
+from .models import CustomUser
+from django.contrib import messages
+    
+class CreateUserView(CreateView):
+    form_class = CustomUserCreateForm
+    success_url = reverse_lazy('login')
+    template_name = 'cadastrar_usuario.html'
+    model = CustomUser
 
-def cadastrar_usuario(request):
-    if request.POST:
-        form = CustomUserCreateForm(request.POST)
-    else:
-        form = CustomUserCreateForm()
-    return render(request, 'cadastrar_usuario.html', {
-        'form' : form,
-    })
-
-def register_view(request):
-
-    if request.POST:
-        form = CustomUserCreateForm(request.POST)
-        if form.is_valid():
-            form.save()
-
-            return redirect("/login")
-    else:
-        form = CustomUserCreateForm()
-
-        return render(request, "register/register.html", {"form":form})
+    def form_valid(self, form):
+        response = super().form_valid(form)
+        messages.success(self.request, "Usuário cadastrado com sucesso!")
+        return response
+    
+    def form_invalid(self, form):
+        """If the form is invalid, render the invalid form."""
+        print("###")
+        return self.render_to_response(self.get_context_data(form=form))
 
         
 

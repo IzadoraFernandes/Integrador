@@ -13,12 +13,13 @@ body {
 #login-box {
   position: relative;
   margin: auto;
-  width: 1000px;
-  height: 580px;
+  width: 1100px;
+  height: 780px;
   background: #fff;
   border-radius: 2px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
 }
+
 
 .left {
   position: absolute;
@@ -27,7 +28,7 @@ body {
   box-sizing: border-box;
   padding: 40px;
   width: 500px;
-  height: 580px;
+  height: 780px;
   background-color: white;
 }
 .right {
@@ -35,9 +36,9 @@ body {
   top: 0;
   right: 0;
   box-sizing: border-box;
-  padding: 120px 70px;
+  padding: 160px 70px;
   width: 500px;
-  height: 580px;
+  height: 780px;
   background-size: cover;
   background-position: center;
   border-radius: 0 2px 2px 0;
@@ -46,7 +47,7 @@ body {
 
 .botao{
   display: flex;
-  margin: 30px 175px;
+  margin: 10px 5px;
 }
 
 @media (min-width: 100px) and (max-width: 770px) {

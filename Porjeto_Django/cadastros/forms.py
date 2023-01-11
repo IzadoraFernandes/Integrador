@@ -1,6 +1,62 @@
 from django import forms
 from django.core.mail.message import EmailMessage
 import datetime 
+from .models import Reserva, Sala, Laboratorio
 
-class Cadastrar_reservaForm(forms.Form):
-    horario = datetime.datetime.now(label='Horário')
+class CadastrarReservaModelForm(forms.ModelForm):
+    
+    class Meta:
+        model = Reserva
+        fields = [
+            'nome', 
+            'descricao',
+            'data',
+            'horario',
+            'salas'
+        ]
+
+        widgets = {
+            'horario': forms.Select(attrs={
+                'placeholder': 'Selecione a opção desejada',
+            }),
+            'data': forms.DateInput(attrs={
+                'placeholder': 'Selecione a opção desejada',
+                'type':'date'
+            }),
+            'salas': forms.Select(attrs={
+                'placeholder': 'Selecione a opção desejada',
+                
+            }),
+        }
+
+class CadastrarLaboratorioModelForm(forms.ModelForm):
+    
+    class Meta:
+        model = Laboratorio
+        fields = [
+            'nome', 
+            'tipo',
+            'descricao'
+        ]
+        
+        widgets = {'tipo': forms.Select(attrs={
+                
+                'placeholder': 'Selecione a opção desejada',
+            }),}
+
+class CadastrarSalaModelForm(forms.ModelForm):
+    
+    class Meta:
+        model = Sala
+        fields = [
+            'nome', 
+            'numero',
+            'bloco', 
+            'descricao',
+            'capacidade'
+        ]
+
+        widgets = {'tipo': forms.Select(attrs={
+                
+                'placeholder': 'Selecione a opção desejada',
+            }),}

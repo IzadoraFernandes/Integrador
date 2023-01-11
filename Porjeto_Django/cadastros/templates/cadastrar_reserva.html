@@ -1,8 +1,5 @@
-{% extends 'modelo_footer.html' %}
 
 {%load static%}
-
-{% block head %}
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -17,10 +14,10 @@
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
 
 </head>
-{%endblock%}
 
+ {% block conteudo%}
 <body>
-    {% block conteudo%}
+   
     <nav>
         <ul class="nav justify-content-end">
             <li class="nav-item">
@@ -31,15 +28,18 @@
 
 
 
-    <form method="post">{% csrf_token %}
+    <form method="post">
+        {% csrf_token %}
         <fieldset>
 
             <div id="login-box">
                 <div class="left">
                     <h3>Cadastrar Reserva de Horário</h3>
                     <div class="form-group">
+                        <label for="{{form.nome.id_for_label}}">{{form.nome.label}} Nome</label>
+                        {{form.nome}}
                         <label for="">Horário</label>
-                        <select class="form-control" name="Horário" required>
+                        <!-- <select class="form-control" name="Horário" required>
                             <option selected disabled value="horário">Selecione</option>
                             <option value="1">07:00 - 07:45</option>
                             <option value="2">07:45 - 08:30</option>
@@ -60,17 +60,18 @@
                             <option value="15">20:40 - 21:25</option>
                             <option value="16">21:25 - 22:10</option>
 
-                        </select>
+                        </select> -->
+                        {{form.horario}}
                     </div><br>
 
                     <div class="form-group">
-                        <label for="">Data</label>
-                        <input class="form-control" id="date" type="date" required>
+                        <label for="{{form.data.id_for_label}}">{{form.data.label}}</label>
+                        {{form.data}}
                     </div><br>
 
                     <div class="form-group">
                         <label for="">Número da sala - Nome da sala</label>
-                        <select class="form-control" name="Número da sala - Nome da sala">
+                        <!-- <select class="form-control" name="Número da sala - Nome da sala">
                             <option selected disabled value="sala">Selecione</option required>
                             <option value="56">56 - LABORATÓRIO DE INFORMÁTICA I</option>
                             <option value="57">57 - LABORATÓRIO DE INFORMÁTICA II</option>
@@ -78,14 +79,14 @@
                             <option value="60">56 - LABORATÓRIO DE REDES</option>
                             <option value="61">57 - LABORATÓRIO DE ELETRÔNICA</option>
                             <option value="65">58 - LABORATÓRIO DE INFORMÁTICA IV</option>
-                        </select>
+                        </select> --> 
                     </div><br>
-
+                    {{form.salas}}
                     <div class="form-group">
-                        <label for="">Descrição</label>
-                        <textarea class="form-control" name="description" rows="5"></textarea>
+                        <label for="{{form.nome.id_for_label}}">{{form.descricao.label}}</label><br>
+                        {{form.descricao}}
                     </div>
-                    <button type="button" class="botao btn btn-outline-info">Enviar</button>
+                    <button type="submit" class="botao btn btn-outline-info">Enviar</button>
                 </div>
                 <div class="right">
                     <img src="{% static 'img/banner_de_formularios.png' %}" width="100%"><br>
