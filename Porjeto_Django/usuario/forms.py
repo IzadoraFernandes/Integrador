@@ -7,7 +7,7 @@ class CustomUserCreateForm(UserCreationForm):
 
     class Meta:
         model = CustomUser
-        fields = ('first_name', 'last_name', 'phone', 'email')
+        fields = ('first_name', 'last_name', 'email')
 
         def save(self, commit=True):
             user: CustomUser = super().save(commit=False)
@@ -25,4 +25,4 @@ class CustomUserChangeForm(UserChangeForm):
 
     class Meta:
         model = CustomUser
-        fields = ('first_name', 'last_name', 'phone')
+        fields = ('first_name', 'last_name')

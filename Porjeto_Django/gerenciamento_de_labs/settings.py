@@ -133,7 +133,7 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGOUT_REDIRECT_URL = '/register/login'
+LOGOUT_REDIRECT_URL = '/login'
 
 LOGIN_REDIRECT_URL = '/menu_salas'
 
