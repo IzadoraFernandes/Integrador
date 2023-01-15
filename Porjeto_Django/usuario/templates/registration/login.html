@@ -11,6 +11,12 @@
 </head>
 
 <body>
+    {% if request.user.is_authenticated %}
+    <h3>Ação não permitida</h3>
+    <p>Houve um problema para acessar a ação desejada ou você não tem permissão!</p>
+
+    {% else %}
+
 
     <div id="login-box">
         <div class="left">
@@ -21,12 +27,12 @@
                 {% csrf_token %}
                 {{form}}
                 <p>Ainda não tem cadastro? Crie agora mesmo! <a href="/register">Criar Cadastro</a></p>
-                <button type="submit" class="btn btn-success">Login</button>	
-                </form> 
+                <button type="submit" class="btn btn-success">Login</button>
+            </form>
         </div>
 
     </div>
-
+    {% endif %}
 </body>
 
 </html>

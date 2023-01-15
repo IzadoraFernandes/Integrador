@@ -4,7 +4,11 @@ from django.views.generic import CreateView
 from django.urls import reverse_lazy
 from .models import CustomUser
 from django.contrib import messages
-    
+from django.views.generic import ListView
+from cadastros.models import Reserva
+
+from braces.views import GroupRequiredMixin
+
 class CreateUserView(CreateView):
     form_class = CustomUserCreateForm
     success_url = reverse_lazy('login')
@@ -21,14 +25,18 @@ class CreateUserView(CreateView):
         print("###")
         return self.render_to_response(self.get_context_data(form=form))
 
-        
-
-
 def login(request):
     return render(request, 'login.html')
 
-def minhas_reservas(request):
-    return render(request, 'minhas_reservas.html')
+
+class MinhasReservasView(ListView, GroupRequiredMixin):
+    model = Reserva
+    group_required = u"Professores"
+    context_object_name = 'minhas_reservas'
+    #queryset = Reserva.objects.filter()
+    paginate_by = 10
+    template_name = 'minhas_reservas.html'
+
 
 def usuarios(request):
     return render(request, 'usuarios.html')

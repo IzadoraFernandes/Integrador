@@ -1,8 +1,12 @@
+#rodape {
+  background-color: #2095ff;
+}
 .main_footer          { 
 	background-color:#00b0d9; 
 	color:#fff; 
 	font-size:0.875em; 
 }
+
 .main_footer .content { float:left; width:90%; margin:0 5%; padding: 5em 0; }
 .container { float:left; width:100%; }
 .colfooter { 

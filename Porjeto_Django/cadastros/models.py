@@ -2,38 +2,29 @@ from django.db import models
 from django.urls import reverse_lazy
 #from braces.views import GroupRequiredMixin
 import datetime 
-
-
-
+from usuario.models import CustomUser
 
 class Laboratorio( models.Model):
-    group_required = u"Coapac"
-    nome = models.CharField(max_length = 50)
+    #group_required = u"Coapac"
+    nome = models.CharField(max_length = 50, unique=True)
     descricao = models.TextField(max_length= 200, verbose_name="Descrição")
-
+    
     def __str__(self):
         return "{} - {}".format(self.nome, self.descricao)
-
-
-    TIPO = (
-        ('INFORMATICA', 'Informática'),
-        ('APICULTURA', 'Apicultura'),
-        ('QUIMICA', 'Quimica'),
-        ('ALIMENTOS', 'Alimentos'),
-    )
-
-    tipo = models.CharField(max_length=25, choices= TIPO)
+  
 
 class Sala( models.Model):
-    group_required = u"Coapac"
-    nome = models.CharField(max_length = 30)
-    numero = models.IntegerField(verbose_name= "Número")
+    #group_required = u"Coapac"
+    nome = models.CharField(max_length = 30, unique=True)
+    numero = models.IntegerField(verbose_name= "Número", unique=True)
     bloco = models.CharField(max_length= 10, verbose_name="Bloco")
     descricao = models.TextField(max_length= 100, verbose_name="Descrição")
     capacidade = models.IntegerField(verbose_name= "Capacidade")
 
-    laboratorio = models.OneToOneField (Laboratorio, on_delete= models.DO_NOTHING)
-
+    laboratorio = models.ForeignKey (Laboratorio, on_delete= models.CASCADE)
+    
+    # um lab pode ter várias salas, mas uma sala só pode ter um lab
+    
     def __str__(self):
         return "{} ({})".format(self.nome, self.bloco)
 
@@ -60,15 +51,7 @@ class Reserva(models.Model):
         ('20:40 - 21:25', '20:40 - 21:25'),
         ('21:25 - 22:10', '21:25 - 22:10'),
     )
-
-    SALAS = (
-            ('56 - LABORATÓRIO DE INFORMÁTICA I', '56 - LABORATÓRIO DE INFORMÁTICA I'),
-            ('57 - LABORATÓRIO DE INFORMÁTICA II', '57 - LABORATÓRIO DE INFORMÁTICA II'),
-            ('58 - LABORATÓRIO DE INFORMÁTICA III', '57 - LABORATÓRIO DE INFORMÁTICA III')
-            
-        )
-
-     
+   
     #group_required = u"Professores"
     nome = models.CharField(max_length=50)
     descricao = models.TextField(max_length= 100, verbose_name="Descrição", blank=True)
@@ -77,7 +60,9 @@ class Reserva(models.Model):
 
       
     horario = models.CharField(max_length=15, choices= HORARIOS)
-    salas = models.CharField(max_length=150, choices= SALAS)
-    #sala = models.ForeignKey(Sala,on_delete=models.CASCADE)
+    #salas = models.CharField(max_length=150, choices= SALAS)
+    sala = models.ForeignKey(Sala,on_delete=models.CASCADE)
+    usuario = models.ForeignKey(CustomUser, on_delete= models.CASCADE)
+
     def __str__(self):
         return "{} ({})".format(self.nome, self.Sala)

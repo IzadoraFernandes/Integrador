@@ -4,21 +4,26 @@ from .forms import CadastrarLaboratorioModelForm, CadastrarReservaModelForm, Cad
 from django.urls import reverse_lazy
 from .models import Reserva, Sala, Laboratorio
 
+from braces.views import GroupRequiredMixin
 
-class Cadastrar_labView(CreateView):
+class Cadastrar_labView(CreateView, GroupRequiredMixin):
     model = Laboratorio
+    group_required = u"Coapac"
     form_class = CadastrarLaboratorioModelForm
     success_url = reverse_lazy('menu_salas')
     template_name = 'cadastrar_lab.html'
 
-class Cadastrar_reservaView(CreateView):
+class Cadastrar_reservaView(CreateView, GroupRequiredMixin):
     model = Reserva
+    group_required = u"Professores"
     form_class = CadastrarReservaModelForm
     success_url = reverse_lazy('minhas_reservas')
     template_name= 'cadastrar_reserva.html'
     
-class Cadastrar_salaView(CreateView):
+    
+class Cadastrar_salaView(CreateView, GroupRequiredMixin):
     model = Sala
+    group_required = u"Coapac"
     form_class = CadastrarSalaModelForm
     success_url = reverse_lazy('menu_salas')
     template_name= 'cadastrar_sala.html'
@@ -38,8 +43,14 @@ class AlimentosView(TemplateView):
 class QuimicaView(TemplateView):
     form_class = CadastrarLaboratorioModelForm
     template_name= 'quimica.html'
-    
-"""
+
+"""class TesteView(TemplateView):
+    template_name = 'teste.html'
+    def get_context_data(self, **kwargs):
+        context = super(TesteView, self).get_context_data(**kwargs)
+        context['sala'] = Sala.objects.all()
+        return context
+
 from django.shortcuts import render
 
 def cadastrar_lab(request):

@@ -12,7 +12,7 @@ class CadastrarReservaModelForm(forms.ModelForm):
             'descricao',
             'data',
             'horario',
-            'salas'
+            'sala'
         ]
 
         widgets = {
@@ -35,14 +35,10 @@ class CadastrarLaboratorioModelForm(forms.ModelForm):
         model = Laboratorio
         fields = [
             'nome', 
-            'tipo',
             'descricao'
         ]
         
-        widgets = {'tipo': forms.Select(attrs={
-                
-                'placeholder': 'Selecione a opção desejada',
-            }),}
+        
 
 class CadastrarSalaModelForm(forms.ModelForm):
     
