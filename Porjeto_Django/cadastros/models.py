@@ -12,8 +12,7 @@ class Sala( models.Model):
     bloco = models.CharField(max_length= 10, verbose_name="Bloco")
     descricao = models.TextField(max_length= 100, verbose_name="Descrição")
     capacidade = models.IntegerField(verbose_name= "Capacidade")
-
-    #laboratorio = models.ForeignKey (Laboratorio, on_delete= models.CASCADE)
+    laboratorio = models.BooleanField(verbose_name= "É laboratório?", default=False)
     
     def __str__(self):
         return "{} ({})".format(self.nome, self.bloco)
@@ -50,7 +49,7 @@ class Reserva(models.Model):
       
     horario = models.CharField(max_length=15, choices= HORARIOS)
     sala = models.ForeignKey(Sala, on_delete=models.CASCADE, blank=True, null=True)
-    usuario = models.ForeignKey(CustomUser, on_delete= models.CASCADE)
+    #usuario = models.ForeignKey(CustomUser, on_delete= models.CASCADE)
 
             
     def __str__(self):

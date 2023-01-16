@@ -36,7 +36,7 @@
                 <div class="left">
                     <h3>Cadastrar Reserva de Horário</h3>
                     <div class="form-group">
-                        <label for="{{form.nome.id_for_label}}">{{form.nome.label}} Nome</label>
+                        <label for="{{form.nome.id_for_label}}">{{form.nome.label}}</label>
                         {{form.nome}}
                         <label for="">Horário</label>
                         <!-- <select class="form-control" name="Horário" required>
@@ -71,17 +71,15 @@
 
                     <div class="form-group">
                         <label for="">Número da sala - Nome da sala</label>
-                        <!-- <select class="form-control" name="Número da sala - Nome da sala">
-                            <option selected disabled value="sala">Selecione</option required>
-                            <option value="56">56 - LABORATÓRIO DE INFORMÁTICA I</option>
-                            <option value="57">57 - LABORATÓRIO DE INFORMÁTICA II</option>
-                            <option value="58">58 - LABORATÓRIO DE INFORMÁTICA III</option>
-                            <option value="60">56 - LABORATÓRIO DE REDES</option>
-                            <option value="61">57 - LABORATÓRIO DE ELETRÔNICA</option>
-                            <option value="65">58 - LABORATÓRIO DE INFORMÁTICA IV</option>
-                        </select> --> 
                     </div><br>
-                    {{form.salas}}
+                   
+                    <select name="sala" id="{{form.sala.id_for_label}}">
+                        <option value disabled selected>Selecione uma sala</option>
+                        {% for salinha in salinhas %}
+                        <option value="{{salinha.id}}">{{salinha.numero}} - {{salinha.nome}}</option>
+                        {%endfor%}
+                    </select>
+
                     <div class="form-group">
                         <label for="{{form.nome.id_for_label}}">{{form.descricao.label}}</label><br>
                         {{form.descricao}}

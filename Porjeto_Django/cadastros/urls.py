@@ -1,10 +1,10 @@
 from django.urls import path
 #from . import views
-from .views import  Cadastrar_reservaView, Cadastrar_salaView, InformaticaView, ApiculturaView, AlimentosView, QuimicaView #, TesteView
+from .views import  CadastrarReservaView, Cadastrar_salaView, InformaticaView, ApiculturaView, AlimentosView, QuimicaView #, TesteView
 urlpatterns = [
     
     #path('cadastrar_lab/', Cadastrar_labView.as_view(), name = 'cadastrar_lab'),
-    path('cadastrar_reserva/', Cadastrar_reservaView.as_view(), name = 'cadastrar_reserva'),
+    path('cadastrar_reserva/', CadastrarReservaView.as_view(), name = 'cadastrar_reserva'),
     path('cadastrar_sala/', Cadastrar_salaView.as_view(), name = 'cadastrar_sala'),
     path('informatica/', InformaticaView.as_view(), name = 'informatica'),
     path('alimentos/', AlimentosView.as_view(), name = 'alimentos'),
