@@ -4,26 +4,16 @@ from django.urls import reverse_lazy
 import datetime 
 from usuario.models import CustomUser
 
-class Laboratorio( models.Model):
-    #group_required = u"Coapac"
-    nome = models.CharField(max_length = 50, unique=True)
-    descricao = models.TextField(max_length= 200, verbose_name="Descrição")
-    
-    def __str__(self):
-        return "{} - {}".format(self.nome, self.descricao)
-  
-
 class Sala( models.Model):
     #group_required = u"Coapac"
+    tipo = models.CharField(max_length=50) 
     nome = models.CharField(max_length = 30, unique=True)
     numero = models.IntegerField(verbose_name= "Número", unique=True)
     bloco = models.CharField(max_length= 10, verbose_name="Bloco")
     descricao = models.TextField(max_length= 100, verbose_name="Descrição")
     capacidade = models.IntegerField(verbose_name= "Capacidade")
 
-    laboratorio = models.ForeignKey (Laboratorio, on_delete= models.CASCADE)
-    
-    # um lab pode ter várias salas, mas uma sala só pode ter um lab
+    #laboratorio = models.ForeignKey (Laboratorio, on_delete= models.CASCADE)
     
     def __str__(self):
         return "{} ({})".format(self.nome, self.bloco)
@@ -53,16 +43,15 @@ class Reserva(models.Model):
     )
    
     #group_required = u"Professores"
+
     nome = models.CharField(max_length=50)
     descricao = models.TextField(max_length= 100, verbose_name="Descrição", blank=True)
     data = models.DateField(blank='False', null='False')
-    #sala = models.ForeignKey(Sala, on_delete= models.PROTECT)
-
       
     horario = models.CharField(max_length=15, choices= HORARIOS)
-    #salas = models.CharField(max_length=150, choices= SALAS)
-    sala = models.ForeignKey(Sala,on_delete=models.CASCADE)
+    sala = models.ForeignKey(Sala, on_delete=models.CASCADE, blank=True, null=True)
     usuario = models.ForeignKey(CustomUser, on_delete= models.CASCADE)
 
+            
     def __str__(self):
-        return "{} ({})".format(self.nome, self.Sala)
+        return "{} ({})".format(self.usuario, self.data)

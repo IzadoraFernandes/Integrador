@@ -1,7 +1,7 @@
 from django import forms
 from django.core.mail.message import EmailMessage
 import datetime 
-from .models import Reserva, Sala, Laboratorio
+from .models import Reserva, Sala
 
 class CadastrarReservaModelForm(forms.ModelForm):
     
@@ -28,18 +28,8 @@ class CadastrarReservaModelForm(forms.ModelForm):
                 
             }),
         }
-
-class CadastrarLaboratorioModelForm(forms.ModelForm):
-    
-    class Meta:
-        model = Laboratorio
-        fields = [
-            'nome', 
-            'descricao'
-        ]
         
         
-
 class CadastrarSalaModelForm(forms.ModelForm):
     
     class Meta:
@@ -49,10 +39,11 @@ class CadastrarSalaModelForm(forms.ModelForm):
             'numero',
             'bloco', 
             'descricao',
-            'capacidade'
+            'capacidade',
+            'tipo'
         ]
 
-        widgets = {'tipo': forms.Select(attrs={
+        widgets = {'tipo': forms.TextInput(attrs={
                 
                 'placeholder': 'Selecione a opção desejada',
             }),}
