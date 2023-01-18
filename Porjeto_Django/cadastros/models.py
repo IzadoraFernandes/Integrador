@@ -43,7 +43,7 @@ class Reserva(models.Model):
    
     #group_required = u"Professores"
 
-    nome = models.CharField(max_length=50)
+    nome = models.CharField(max_length=150)
     descricao = models.TextField(max_length= 100, verbose_name="Descrição", blank=True)
     data = models.DateField(blank='False', null='False')
       

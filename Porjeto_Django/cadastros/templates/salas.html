@@ -15,9 +15,9 @@
 {%endblock%}
 
 
-<body>
+{% block conteudo%}
 
-    {% block conteudo%}
+<body>
 
     <nav>
         <div class="barranav">
@@ -27,9 +27,12 @@
 
             <div class="linknav">
                 <div class="nav-item">
-                    <a href="{% url 'login' %}" class="nav-link">Sair</a>
+                    <a href="{% url 'cadastrar_sala' %}" class="nav-link">Cadastrar Salas</a>
                 </div>
 
+                <div class="nav-item">
+                    <a href="{% url 'login' %}" class="nav-link">Sair</a>
+                </div>
             </div>
 
         </div>
@@ -37,41 +40,32 @@
 
     <header>
         <div class="container">
-            <div class="row align-items-center">
-                <br>
-                <h1>Laborátorios</h1><br>
+            <div style="justify-content: center;">
+                <br><h1>Laborátorios</h1><br>
             </div>
         </div>
     </header>
 
 
-    <section>
-        <div class="container">
-            {% for object in object_list%}
-                <div class="card mb-3"
-            style="max-width: 80rem; flex-direction: row; display: flex; justify-content: space-between">
-             <a href="{% url 'agenda' %}">
-
-                        <div class="card-body" style="color:black" >
-                           
-                                <ul style="list-style: none;">
-                                    <h5 class="card-title">Sala</h5>
-                                    <li>{{object.numero}} - {{object.nome}}</li>    
-                            </ul>
-                           
-
-
-                        </div>
-                        
-                        <div class="card-body" style="color:black">
-                            <ul style="list-style: none;">
-                                <li>Bloco - {{object.bloco}}</li>
-                            </ul>
-                        </div>
-                        
-
-                    </a>
-              
+    <section class="container">
+          {% for object in object_list%}
+            <div class="card mb-3"
+                style="max-width: 80rem; flex-direction: row; display: flex; justify-content: space-between">
+           
+                <div class="card-body">
+                        <ul style="list-style: none;">
+                            <a href="{% url 'agenda' %}" style="color: black !important;"><h5 class="card-title">Sala</h5>
+                                <li>{{object.numero}} - {{object.nome}}</li> 
+                            </a>
+                        </ul>
+                </div>
+                <div class="card-body">
+                    <ul style="list-style: none;">
+                        <a href="{% url 'agenda' %}" style="color: black !important;">
+                            <li>Bloco - {{object.bloco}}</li>
+                        </a>
+                    </ul>
+                </div>
 
                 <div class="card-body"><br>
                     <a href="{% url 'update-salas' object.id %}">

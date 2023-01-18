@@ -1,21 +1,31 @@
-{% extends 'modelo.html' %}
-
 {%load static%}
 
- {%block titulo %}
- <title>Salas</title>
- {%endblock%}
+<!DOCTYPE html>
+<html lang="pt-br">
 
-{%block css%}
-<link rel="stylesheet" type="text/css" href="{% static 'css/forms.css' %}">
-{%endblock%}
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/forms.css' %}">
+    <!-- CSS only -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
 
+</head>
+{% if request.user.is_authenticated %}
 {%block conteudo%}
 <body>
+    <nav>
+        <ul class="nav justify-content-end">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'salas' %}">Voltar</a>
+            </li>
+        </ul>
+    </nav>
    
 
-    <form method="post">
-        {% csrf_token %}
+    <form method="post">{% csrf_token %}
         <fieldset>
 
             <div id="login-box">
@@ -24,25 +34,28 @@
                     <div class="form-group">
                         <label for="{{form.nome.id_for_label}}">{{form.nome.label}}</label>
                         {{form.nome}}
+                    </div><br>
+
+                    <div class="form-group">
                         <label for="">Horário</label>
                         {{form.horario}}
                     </div><br>
-
+                    
                     <div class="form-group">
                         <label for="{{form.data.id_for_label}}">{{form.data.label}}</label>
                         {{form.data}}
                     </div><br>
 
                     <div class="form-group">
-                        <label for="">Número da sala - Nome da sala</label>
+                        <label for="">Nome da sala - Número da sala</label>
+                        {{form.sala}}
                     </div><br>
-                    {{form.sala}}
                     
-
                     <div class="form-group">
                         <label for="{{form.nome.id_for_label}}">{{form.descricao.label}}</label><br>
                         {{form.descricao}}
                     </div>
+        
                     <button type="submit" class="botao btn btn-outline-info">Enviar</button>
                 </div>
                 <div class="right">
@@ -56,7 +69,11 @@
 </body>
 {% endblock %}
 
-{%block footer%}
-
-{%endblock%}
+{%else%}
+        <h1> Você não está autenticado!</h1> 
+        <h4>Por favor faça login ou cadastre-se para ter acesso.</h4>
+                
+        <a href="{% url 'login' %}"> Login</a>
+        <a href="{% url 'register' %}"> Cadastro</a>
+{% endif %}
 </html>

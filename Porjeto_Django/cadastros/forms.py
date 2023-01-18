@@ -18,15 +18,26 @@ class CadastrarReservaModelForm(forms.ModelForm):
         widgets = {
             'horario': forms.Select(attrs={
                 'placeholder': 'Selecione a opção desejada',
+                'class': 'form-control'
             }),
             'data': forms.DateInput(attrs={
                 'placeholder': 'Selecione a opção desejada',
-                'type':'date'
+                'type':'date',
+                'class': 'form-control'
             }),
             'sala': forms.Select(attrs={
                 'placeholder': 'Selecione a opção desejada',
+                'class': 'form-control'
                 
             }),
+            'nome': forms.TextInput(attrs={
+                'placeholder': 'Seu nome completo',
+                'class': 'form-control'
+            }),
+            'descricao': forms.Textarea(attrs={
+                'placeholder': 'Anotações',
+                'class': 'form-control'
+            })
         }
         
         
@@ -44,7 +55,25 @@ class CadastrarSalaModelForm(forms.ModelForm):
             'laboratorio'
         ]
 
-        widgets = {'tipo': forms.TextInput(attrs={
-                
-                'placeholder': 'Selecione a opção desejada',
-            }),}
+        widgets = {'nome': forms.TextInput(attrs={
+                'placeholder': 'Ex: Laboratório de Informática III',
+                'class': 'form-control'
+            }),
+            'numero': forms.TextInput(attrs={
+                'class': 'form-control'
+            }),
+            'bloco': forms.TextInput(attrs={
+                'placeholder': 'Ex: 01',
+                'class': 'form-control'
+            }),
+            'descricao': forms.Textarea(attrs={
+                'class': 'form-control'
+            }),
+            'capacidade': forms.TextInput(attrs={
+                'class': 'form-control'
+            }),
+            'tipo': forms.Select(attrs={
+                'class': 'form-control'
+            }),
+            
+            }

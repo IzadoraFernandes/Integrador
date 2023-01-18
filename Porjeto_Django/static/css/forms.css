@@ -26,10 +26,11 @@ body {
   top: 0;
   left: 0;
   box-sizing: border-box;
-  padding: 40px;
+  padding: 20px;
   width: 500px;
   height: 780px;
   background-color: white;
+  
 }
 .right {
   position: absolute;

@@ -1,4 +1,3 @@
-
 {%load static%}
 
 <!DOCTYPE html>
@@ -14,7 +13,7 @@
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
 
 </head>
-
+{% if request.user.is_authenticated %}
 {%block conteudo%}
 <body>
    
@@ -32,6 +31,7 @@
             <div id="login-box">
                 <div class="left">
                     <h3>Cadastrar Nova sala</h3>
+                    
                     <div class="form-group">
                         <label for="{{form.nome.id_for_label}}">{{form.nome.label}}</label><br>
                         {{form.nome}}
@@ -49,19 +49,21 @@
                         </div>
                     </div><br>
 
-                    <div class="form-group">
-                        <label for="{{form.nome.id_for_label}}">{{form.bloco.label}}</label><br>
-                            {{form.bloco}}
+                    <div style="display: flex; justify-content: space-between;">
+                        <div class="form-group">
+                            <label for="{{form.nome.id_for_label}}">{{form.bloco.label}}</label><br>
+                                {{form.bloco}}
+                        </div>
+
+                        <div class="form-group">
+                            <label for="{{form.tipo.id_for_label}}">{{form.laboratorio.label}}</label><br>
+                                {{form.laboratorio}}
+                        </div>
                     </div><br>
                     
                     <div class="form-group">
                         <label for="{{form.tipo.id_for_label}}">{{form.tipo.label}}</label><br>
                             {{form.tipo}}
-                    </div><br>
-
-                    <div class="form-group">
-                        <label for="{{form.tipo.id_for_label}}">{{form.laboratorio.label}}</label><br>
-                            {{form.laboratorio}}
                     </div><br>
 
                     <div class="form-group">
@@ -82,4 +84,12 @@
   
 </body>
   {%endblock%}
+
+  {%else%}
+        <h1> Você não está autenticado!</h1> 
+        <h4>Por favor faça login ou cadastre-se para ter acesso.</h4>
+                
+        <a href="{% url 'login' %}"> Login</a>
+        <a href="{% url 'register' %}"> Cadastro</a>
+    {% endif %}
 </html>

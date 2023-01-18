@@ -50,14 +50,13 @@
     <section class="container">
         {% for object in object_list%}
         <div class="card mb-3"
-            style="max-width: 80rem; flex-direction: row; display: flex; justify-content: space-around">
+            style="max-width: 80rem; flex-direction: row; display: flex; justify-content: space-between">
 
-            <div class="card-body">
+            <div class="card-body" style="padding: 10px;">
                 <ul style="list-style: none;">
                     <h5 class="card-title">Laboratório</h5>
                     <li>{{object.sala.numero}} - {{object.sala.nome}}</li>
                 </ul>
-
             </div>
 
             <div class="card-body">
