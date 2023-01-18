@@ -29,11 +29,11 @@ def login(request):
     return render(request, 'login.html')
 
 
-class MinhasReservasView(ListView, GroupRequiredMixin):
+class MinhasReservasView(ListView):
     model = Reserva
-    group_required = u"Professores"
-    context_object_name = 'minhas_reservas'
-    #queryset = Reserva.objects.filter()
+    #group_required = u"Professores"
+    #context_object_name = 'minhas_reservas'
+    queryset = Reserva.objects.all()
     paginate_by = 10
     template_name = 'minhas_reservas.html'
 
@@ -41,7 +41,3 @@ class MinhasReservasView(ListView, GroupRequiredMixin):
 def usuarios(request):
     return render(request, 'usuarios.html')
 
-#from django.views.generic import TemplateView
-
-#class Cadastrar_labView(TemplateView):
-    #template_name = 'cadastrar_lab.html'

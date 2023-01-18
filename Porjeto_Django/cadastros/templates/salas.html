@@ -1,0 +1,59 @@
+{% extends 'modelo.html' %}
+
+{%load static%}
+
+{% block head %}
+
+{%block titulo %}
+<title>Salas</title>
+{%endblock%}
+
+{%block css%}
+<link rel="stylesheet" type="text/css" href="{% static 'css/salas_lab.css' %}">
+{%endblock%}
+
+{%endblock%}
+
+
+<body>
+
+    {% block conteudo%}
+
+    <header>
+        <div class="cabecalho container">
+            <div class="titdivo">
+                <h1>Um Software de Gerenciamento Laboratorial</h1>
+            </div>
+            <div class="imgheader">
+                <img src="{% static 'img/notebook.png' %}" width="50%">
+            </div>
+        </div>
+    </header>
+
+
+    <section>
+        <h3>Salas</h3><br>
+        <div class="container">
+            {% for object in object_list%}
+            <div class="card mb-3"
+                style="max-width: 80rem; flex-direction: row; display: flex; justify-content: space-around;">
+                <a href="{% url 'agenda' %}"></a>
+
+                <div class="card-body">
+                    <ul>
+                        <li>Sala: {{object.nome}} - Bloco: {{object.bloco}}</li>
+                    </ul>
+                </div>
+
+
+                    {%endfor%}
+                </div>
+    </section>
+    {%endblock%}
+</body>
+
+<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/popper.min.js' %}"></script>
+
+</html>

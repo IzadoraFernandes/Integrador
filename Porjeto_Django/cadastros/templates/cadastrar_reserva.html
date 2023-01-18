@@ -1,32 +1,23 @@
+{% extends 'modelo.html' %}
 
 {%load static%}
 
-<!DOCTYPE html>
-<html lang="pt-br">
+{% block head %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulário</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/forms.css' %}">
-    <!-- CSS only -->
-    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+ {%block titulo %}
+ <title>Salas</title>
+ {%endblock%}
 
-</head>
+{%block css%}
+<link rel="stylesheet" type="text/css" href="{% static 'css/forms.css' %}">
+{%endblock%}
 
- {% block conteudo%}
+{%endblock%}
+
+
+{%block conteudo%}
 <body>
    
-    <nav>
-        <ul class="nav justify-content-end">
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'menu_salas' %}">Voltar</a>
-            </li>
-        </ul>
-    </nav>
-
-
 
     <form method="post">
         {% csrf_token %}
@@ -39,28 +30,6 @@
                         <label for="{{form.nome.id_for_label}}">{{form.nome.label}}</label>
                         {{form.nome}}
                         <label for="">Horário</label>
-                        <!-- <select class="form-control" name="Horário" required>
-                            <option selected disabled value="horário">Selecione</option>
-                            <option value="1">07:00 - 07:45</option>
-                            <option value="2">07:45 - 08:30</option>
-                            <option value="3">08:50 - 09:35</option>
-                            <option value="4">09:35 - 10:20</option>
-                            <option value="5">10:30 - 11:15</option>
-                            <option value="6">11:15 - 12:00</option>
-
-                            <option value="7">13:00 - 13:45</option>
-                            <option value="8">13:45 - 14:30</option>
-                            <option value="9">14:50 - 15:35</option>
-                            <option value="10">15:35 - 16:20</option>
-                            <option value="11">16:30 - 17:15</option>
-                            <option value="12">17:15 - 18:00</option>
-
-                            <option value="13">19:00 - 19:45</option>
-                            <option value="14">19:45 - 20:30</option>
-                            <option value="15">20:40 - 21:25</option>
-                            <option value="16">21:25 - 22:10</option>
-
-                        </select> -->
                         {{form.horario}}
                     </div><br>
 
@@ -72,13 +41,8 @@
                     <div class="form-group">
                         <label for="">Número da sala - Nome da sala</label>
                     </div><br>
-                   
-                    <select name="sala" id="{{form.sala.id_for_label}}">
-                        <option value disabled selected>Selecione uma sala</option>
-                        {% for salinha in salinhas %}
-                        <option value="{{salinha.id}}">{{salinha.numero}} - {{salinha.nome}}</option>
-                        {%endfor%}
-                    </select>
+                    {{form.sala}}
+                    
 
                     <div class="form-group">
                         <label for="{{form.nome.id_for_label}}">{{form.descricao.label}}</label><br>
@@ -94,7 +58,10 @@
         </fieldset>
 
     </form>
-    {%endblock%}
 </body>
+{% endblock %}
 
+{%block footer%}
+
+{%endblock%}
 </html>
