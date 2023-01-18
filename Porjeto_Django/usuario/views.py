@@ -6,8 +6,10 @@ from .models import CustomUser
 from django.contrib import messages
 from django.views.generic import ListView
 from cadastros.models import Reserva
-
 from braces.views import GroupRequiredMixin
+
+from django.contrib.auth.models import Group
+from django.shortcuts import get_object_or_404
 
 class CreateUserView(CreateView):
     form_class = CustomUserCreateForm
