@@ -48,24 +48,30 @@
     <section>
         <div class="container">
             {% for object in object_list%}
-            <div class="card mb-3"
-                style="max-width: 50rem; flex-direction: row; display: flex; justify-content: space-around;">
-                <div>
-                    <a href="{% url 'agenda' %}">
+                <div class="card mb-3"
+            style="max-width: 80rem; flex-direction: row; display: flex; justify-content: space-between">
+             <a href="{% url 'agenda' %}">
 
-                        <div class="card-body" style="color:black">
-                            <ul style="list-style: none;">
-                                <h5 class="card-title">Sala</h5>
-                                <li>{{object.numero}} - {{object.nome}}</li>
+                        <div class="card-body" style="color:black" >
+                           
+                                <ul style="list-style: none;">
+                                    <h5 class="card-title">Sala</h5>
+                                    <li>{{object.numero}} - {{object.nome}}</li>    
                             </ul>
+                           
 
+
+                        </div>
+                        
+                        <div class="card-body" style="color:black">
                             <ul style="list-style: none;">
                                 <li>Bloco - {{object.bloco}}</li>
                             </ul>
                         </div>
+                        
 
                     </a>
-                </div>
+              
 
                 <div class="card-body"><br>
                     <a href="{% url 'update-salas' object.id %}">

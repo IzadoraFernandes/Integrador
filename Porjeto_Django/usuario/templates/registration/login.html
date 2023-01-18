@@ -11,9 +11,6 @@
 </head>
 
 <body>
-    
-   
-
 
     <div id="login-box">
         <div class="left">
@@ -21,9 +18,12 @@
         </div>
         <div class="right">
             <form method="post" class="from-group">
-                {% csrf_token %}
-                {{form}}
-                <p>Ainda não tem cadastro? Crie agora mesmo! <a href="/register">Criar Cadastro</a></p>
+                <div class="campo">
+                    {% csrf_token %}
+                    {{form}}
+                    <p>Ainda não tem cadastro? Crie agora mesmo! <a href="/register">Criar Cadastro</a></p>
+                </div>
+               
                 <button type="submit" class="btn btn-success">Login</button>
             </form>
         </div>

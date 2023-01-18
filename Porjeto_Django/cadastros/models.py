@@ -53,4 +53,4 @@ class Reserva(models.Model):
 
             
     def __str__(self):
-        return "{} ({})".format(self.usuario, self.data)
+        return "{} ({})".format(self.nome, self.data)

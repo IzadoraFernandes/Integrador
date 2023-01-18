@@ -10,8 +10,9 @@
 <link rel="stylesheet" href="{% static 'css/index.css' %}">
 {%endblock%}
 
+{% block conteudo%}
 <body>
-    {% block conteudo%}
+    
     <nav>
         <div class="barranav">
             <div>
@@ -81,9 +82,9 @@
     </section>
 
 
-    {%endblock%}
+  
 </body>
-
+  {%endblock%}
 
 <!-- JavaScript Bundle with Popper -->
 <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>

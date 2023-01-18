@@ -13,9 +13,9 @@ body {
 
 #login-box {
   position: relative;
-  margin: 10% auto;
-  width: 700px;
-  height: 350px;
+  margin: 5% auto;
+  width: 1000px;
+  height: 650px;
   background: #fff;
   border-radius: 2px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
@@ -26,16 +26,34 @@ body {
   top: 0;
   left: 0;
   box-sizing: border-box;
-  padding: 40px;
-  width: 300px;
-  height: 350px;
+  padding: 110px 70px;
+  width: 450px;
+  height: 450px;
   background-color: white;
+}
+.right {
+  position: absolute;
+  top: 0;
+  right: 0;
+  box-sizing: border-box;
+  padding: 100px;
+  width: 450px;
+  height: 650px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 0 2px 2px 0;
+  background-color: #d9d9d9c5;
+}
+
+.campo{
+  margin-top: 60px;
+  background: none;
 }
 
 input[type="text"],
 input[type="password"] {
+  margin-bottom: 40px;
   display: block;
-  margin-bottom: 20px;
   padding: 4px;
   width: 220px;
   height: 32px;
@@ -45,17 +63,11 @@ input[type="password"] {
   background: none;
 }
 
-input[type="text"]:focus,
-input[type="password"]:focus {
-  border-bottom: 2px solid black;
-  color: black;
-  transition: 0.2s ease;
-}
 
-input[type="submit"] {
+.btn {
   margin-top: 28px;
-  width: 120px;
-  height: 32px;
+  width: 200px;
+  height: 42px;
   background: #2095ff;
   border: none;
   border-radius: 10px;
@@ -65,34 +77,17 @@ input[type="submit"] {
   text-transform: uppercase;
   transition: 0.1s ease;
   cursor: pointer;
+  
 }
 
-input[type="submit"]:hover,
-input[type="submit"]:focus {
-  opacity: 0.8;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
-  transition: 0.1s ease;
-}
 
-input[type="submit"]:active {
+.btn :active {
   opacity: 1;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
   transition: 0.1s ease;
 }
 
-.right {
-  position: absolute;
-  top: 0;
-  right: 0;
-  box-sizing: border-box;
-  padding: 120px 70px;
-  width: 350px;
-  height: 350px;
-  background-size: cover;
-  background-position: center;
-  border-radius: 0 2px 2px 0;
-  background-color: #d9d9d9c5;
-}
+
 
 @media (min-width: 100px) and (max-width: 770px) {
   #login-box {

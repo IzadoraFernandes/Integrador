@@ -20,7 +20,7 @@
 
             <div class="linknav">
                 <div class="nav-item">
-                    <a class="nav-link" href="{%url 'menu_salas' %}">Inicio</a>
+                    <a class="nav-link" href="{%url 'salas' %}">Inicio</a>
                 </div>
                 <div class="nav-item">
                     <a class="nav-link" href="{% url 'cadastrar_reserva' %}">Adicionar reservas</a>
@@ -33,7 +33,7 @@
 
         </div>
     </nav>
-
+    <!--<h1> X {{ reservas }} </h1> --> 
     <header>
         <div class="container" style="padding: 10px;">
             <div class="row align-items-center">
@@ -46,16 +46,16 @@
     </header>
 
     <section class="container" style="padding: 40px 0px;">
-        <h3>LABORATÓRIO DE INFORMÁTICA I</h3><br>
+        <h3>{{ sala.nome }}</h3><br>
         <div class="informacaosala">
             <div>
-                <h6>Sala: 56</h6>
+                <h6>N: {{sala.numero}}</h6>
             </div>
             <div>
-                <h6>Capacidade: 20</h6>
+                <h6>Capacidade: {{sala.capacidade}}</h6>
             </div>
             <div>
-                <h6>Bloco 02 Principal</h6>
+                <h6>Bloco: {{sala.bloco}}</h6>
             </div>
         </div>
     </section>

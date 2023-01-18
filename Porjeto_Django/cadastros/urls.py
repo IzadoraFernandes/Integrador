@@ -1,6 +1,7 @@
 from django.urls import path
 #from . import views
 from .views import  CadastrarReservaView, ReservaListView, ReservaUpdateView,ReservaDeleteView, CadastrarSalaView, SalasListView, SalasUpdateView, SalasDeleteView
+
 urlpatterns = [
     
     #path('cadastrar_lab/', Cadastrar_labView.as_view(), name = 'cadastrar_lab'),
@@ -12,4 +13,6 @@ urlpatterns = [
     path('salas/', SalasListView.as_view(), name = 'salas'),
     path('<int:pk>/update-salas/', SalasUpdateView.as_view(), name='update-salas'),
     path('<int:pk>/delete-salas/', SalasDeleteView.as_view(), name='delete-salas'),
+
+    
 ]
