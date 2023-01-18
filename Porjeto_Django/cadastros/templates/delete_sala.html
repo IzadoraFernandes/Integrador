@@ -1,8 +1,25 @@
+{% extends 'modelo.html' %}
+
+{%load static%}
+
+ {%block titulo %}
+ <title>Salas</title>
+ {%endblock%}
+
+{%block css%}
+<link rel="stylesheet" type="text/css" href="{% static 'css/forms.css' %}">
+{%endblock%}
+
+{%block conteudo%}
+
+
 <form method="post">
 	{% csrf_token %}
 
-	<p>Are you sure you want to delete ""?</p>
+	<p>Você está tentando apagar uma sala, tem certeza que deseja realizar está ação?</p>
 
 		<input type="submit" value="Confirm">
 </form>
+
+{%endblock%}
 	

@@ -9,7 +9,7 @@
 {%endblock%}
 
 {%block css%}
-<link rel="stylesheet" type="text/css" href="{% static 'css/salas_lab.css' %}">
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
 {%endblock%}
 
 {%endblock%}
@@ -19,35 +19,67 @@
 
     {% block conteudo%}
 
-    <header>
-        <div class="cabecalho container">
-            <div class="titdivo">
-                <h1>Um Software de Gerenciamento Laboratorial</h1>
+    <nav>
+        <div class="barranav">
+            <div>
+                <img class="imgnav" src="{% static 'img/Logo.png' %}" width="15%">
             </div>
-            <div class="imgheader">
-                <img src="{% static 'img/notebook.png' %}" width="50%">
+
+            <div class="linknav">
+                <div class="nav-item">
+                    <a href="{% url 'login' %}" class="nav-link">Sair</a>
+                </div>
+
+            </div>
+
+        </div>
+    </nav>
+
+    <header>
+        <div class="container">
+            <div class="row align-items-center">
+                <br>
+                <h1>Laborátorios</h1><br>
             </div>
         </div>
     </header>
 
 
     <section>
-        <h3>Salas</h3><br>
         <div class="container">
             {% for object in object_list%}
             <div class="card mb-3"
-                style="max-width: 80rem; flex-direction: row; display: flex; justify-content: space-around;">
-                <a href="{% url 'agenda' %}"></a>
+                style="max-width: 50rem; flex-direction: row; display: flex; justify-content: space-between;">
+                <div>
+                    <a href="{% url 'agenda' %}">
 
-                <div class="card-body">
-                    <ul>
-                        <li>Sala: {{object.nome}} - Bloco: {{object.bloco}}</li>
-                    </ul>
+                        <div class="card-body" style="color:black">
+                            <ul style="list-style: none;">
+                                <h5 class="card-title">Sala</h5>
+                                <li>{{object.numero}} - {{object.nome}}</li>
+                            </ul>
+
+                            <ul style="list-style: none;">
+                                <li>Bloco - {{object.bloco}}</li>
+                            </ul>
+                        </div>
+
+                    </a>
                 </div>
 
+                <div class="card-body"><br>
+                    <a href="{% url 'update-salas' object.id %}">
+                        <img src="{% static 'img/lapis.preto.png' %}">
+                    </a>
 
-                    {%endfor%}
+                    <a href="{% url 'delete-salas' object.id %}">
+                        <img src="{% static 'img/lixeira.preto.png' %}">
+                    </a>
                 </div>
+
+            </div>
+            {%endfor%}
+
     </section>
     {%endblock%}
 </body>

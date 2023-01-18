@@ -38,6 +38,7 @@ class ReservaListView(ListView): #GroupRequiredMixin
     model = Reserva
     #group_required = u"Professores"
     template_name = 'teste.html'
+    allow_empty = True
 
 class ReservaUpdateView(UpdateView):
     model = Reserva
@@ -71,18 +72,18 @@ class SalasListView(ListView):
     model = Sala
     queryset = Sala.objects.all()
     template_name= 'salas.html'
-    print('query',queryset)
+    allow_empty = True
     
 
 class SalasUpdateView(UpdateView):
     model = Sala
     form_class = CadastrarSalaModelForm
     template_name= 'cadastrar_sala.html'
-    sucess_url= reverse_lazy('minhas_reservas')
+    success_url= reverse_lazy('salas')
 
 
 class SalasDeleteView(DeleteView):
     model = Sala 
     template_name= 'delete_sala.html'   
-    success_url= reverse_lazy('minhas_reservas')
+    success_url= reverse_lazy('salas')
 

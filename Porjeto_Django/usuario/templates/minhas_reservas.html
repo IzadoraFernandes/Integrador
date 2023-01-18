@@ -2,27 +2,33 @@
 
 {%load static%}
 
-{% block head %}
-
- {%block titulo %}
- <title>Minhas Reservas</title>
- {%endblock%}
+{%block titulo %}
+<title>Minhas Reservas</title>
+{%endblock%}
 
 {%block css%}
-<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
 {%endblock%}
-
-{%endblock%}
-
 
 <body>
     {% block conteudo%}
     <nav>
-        <ul class="nav justify-content-end">
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'salas' %}">Sair</a>
-            </li>
-        </ul>
+        <div class="barranav">
+            <div>
+                <img class="imgnav" src="{% static 'img/Logo.png' %}" width="15%">
+            </div>
+
+            <div class="linknav">
+                <div class="nav justify-content-end">
+                    <div class="nav-item">
+                        <a class="nav-link" href="{% url 'salas' %}">Salas</a>
+                    </div>
+                    <div class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}">Sair</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </nav>
 
     <header>
@@ -43,23 +49,20 @@
     <section class="container">
         {% for object in object_list%}
         <div class="card mb-3"
-            style="max-width: 80rem; flex-direction: row; display: flex; justify-content: space-around;">
-            
+            style="max-width: 80rem; flex-direction: row; display: flex; justify-content: space-around">
+
             <div class="card-body">
-                <h5 class="card-title">Nome do Laboratório</h5>
-                
-                <ul>
+                <ul style="list-style: none;">
+                    <h5 class="card-title">Laboratório</h5>
                     <li>{{object.sala.numero}} - {{object.sala.nome}}</li>
                 </ul>
-                
+
             </div>
 
             <div class="card-body">
-                <h6 class="card-title">Data e Horário</h6>
-
-                <ul>
+                <ul style="list-style: none;">
+                    <h5 class="card-title">Data e Horário</h5>
                     <li>{{ object.data}} - {{ object.horario}}</li>
-                    
                 </ul>
             </div>
 
@@ -67,18 +70,18 @@
                 <a href="{% url 'update-reserva' object.id %}">
                     <img src="{% static 'img/lapis.preto.png' %}">
                 </a>
-                
+
                 <a href="{% url 'delete-reserva' object.id %}">
                     <img src="{% static 'img/lixeira.preto.png' %}">
                 </a>
             </div>
-            
+
         </div>
         {% endfor %}
     </section>
-   
 
-{%endblock%}
+
+    {%endblock%}
 </body>
 
 

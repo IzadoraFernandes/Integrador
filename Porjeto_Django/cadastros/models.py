@@ -7,7 +7,7 @@ from usuario.models import CustomUser
 class Sala( models.Model):
     #group_required = u"Coapac"
     tipo = models.CharField(max_length=50) 
-    nome = models.CharField(max_length = 30, unique=True)
+    nome = models.CharField(max_length = 250, unique=True)
     numero = models.IntegerField(verbose_name= "Número", unique=True)
     bloco = models.CharField(max_length= 10, verbose_name="Bloco")
     descricao = models.TextField(max_length= 100, verbose_name="Descrição")

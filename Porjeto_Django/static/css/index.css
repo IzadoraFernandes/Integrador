@@ -36,6 +36,7 @@
 
 a {
   color: white !important;
+  text-decoration: none;
 }
 .barranav {
   display: flex;
