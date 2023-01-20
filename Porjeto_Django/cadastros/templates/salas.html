@@ -14,7 +14,7 @@
 
 {%endblock%}
 
-
+{% if request.user.is_authenticated %}
 {% block conteudo%}
 
 <body>
@@ -84,8 +84,17 @@
     {%endblock%}
 </body>
 
+{%else%}
+        <h1> Você não está autenticado!</h1> 
+        <h4>Por favor faça login ou cadastre-se para ter acesso.</h4>
+                
+        <a href="{% url 'login' %}"> Login</a>
+        <a href="{% url 'register' %}"> Cadastro</a>
+{% endif %}
+
 <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
 <script src="{% static 'js/bootstrap.min.js' %}"></script>
 <script src="{% static 'js/popper.min.js' %}"></script>
+
 
 </html>

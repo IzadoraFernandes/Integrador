@@ -2,13 +2,13 @@ from django import forms
 from django.core.mail.message import EmailMessage
 import datetime 
 from .models import Reserva, Sala
+from usuario.models import CustomUser
 
 class CadastrarReservaModelForm(forms.ModelForm):
     
     class Meta:
         model = Reserva
         fields = [
-            'nome', 
             'descricao',
             'data',
             'horario',
@@ -39,7 +39,12 @@ class CadastrarReservaModelForm(forms.ModelForm):
                 'class': 'form-control'
             })
         }
-        
+    """def __init__(self, user=None, *args, **kwargs):
+        usuario(CustomUser, self).__init__(*args,**kwargs)
+        if user.is_authrnticated:
+            print(user)
+        else:
+            print('Não está autenticado')"""
         
 class CadastrarSalaModelForm(forms.ModelForm):
     
@@ -72,7 +77,7 @@ class CadastrarSalaModelForm(forms.ModelForm):
             'capacidade': forms.TextInput(attrs={
                 'class': 'form-control'
             }),
-            'tipo': forms.Select(attrs={
+            'tipo': forms.TextInput(attrs={
                 'class': 'form-control'
             }),
             

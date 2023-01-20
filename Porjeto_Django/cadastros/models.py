@@ -43,10 +43,8 @@ class Reserva(models.Model):
    
     #group_required = u"Professores"
 
-    nome = models.CharField(max_length=150)
     descricao = models.TextField(max_length= 100, verbose_name="Descrição", blank=True)
     data = models.DateField(blank='False', null='False')
-      
     horario = models.CharField(max_length=15, choices= HORARIOS)
     sala = models.ForeignKey(Sala, on_delete=models.CASCADE)
     #usuario = models.ForeignKey(CustomUser, on_delete= models.CASCADE)

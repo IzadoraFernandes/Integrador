@@ -10,6 +10,7 @@
 <link rel="stylesheet" type="text/css" href="{% static 'css/forms.css' %}">
 {%endblock%}
 
+{% if request.user.is_authenticated %}
 {%block conteudo%}
 
 
@@ -22,4 +23,12 @@
 </form>
 
 {%endblock%}
+
+{%else%}
+        <h1> Você não está autenticado!</h1> 
+        <h4>Por favor faça login ou cadastre-se para ter acesso.</h4>
+                
+        <a href="{% url 'login' %}"> Login</a>
+        <a href="{% url 'register' %}"> Cadastro</a>
+{% endif %}
 	
