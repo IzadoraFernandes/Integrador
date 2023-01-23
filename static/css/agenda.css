@@ -1,0 +1,41 @@
+.informacaosala {
+  display: flex;
+  justify-content: space-between;
+  background-color: #2095ff;
+  color: white;
+  padding: 5px 14px;
+  border-radius: 10px;
+}
+#rodape {
+  background-color: #2095ff;
+}
+a {
+  color: white !important;
+}
+.barranav{
+  display: flex;
+  justify-content: space-between;
+  background-color: #2095ff;
+  align-items: center;
+}
+.linknav{
+  display: flex;
+  padding: 10px;
+}
+.nav-item{
+  margin: 0px 10px;
+}
+@media (max-width: 1100px) {
+  .linknav{
+    flex-direction: row;
+  }
+  img{
+    width: 20%;
+  }
+  .nav-item{
+    margin: 0px 30px;
+  }
+  .barranav{
+    align-items: center;
+  }
+}

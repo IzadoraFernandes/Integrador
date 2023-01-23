@@ -1,0 +1,64 @@
+{% extends 'modelo_footer.html' %}
+
+{%load static%}
+
+{% block head %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/forms.css' %}">
+    <!-- CSS only -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+
+</head>
+{%endblock%}
+
+<body>
+
+    {% block conteudo%}
+    <nav>
+        <ul class="nav justify-content-end">
+            <li class="nav-item">
+                <a class="nav-link" href="{%url 'index'%}">Voltar</a>
+            </li>
+        </ul>
+    </nav>
+
+
+    <form  method= "POST"  class= "form-group" >
+        {% csrf_token %}
+        <div.form-content form-content-grid> 
+            {% for field in form %}
+
+                <div class = "form-group">
+
+                    <label for = "{{ field.id_for_label}}"> {{ field.label}} </label>
+                    {{field}}
+
+                    {% if field.help_text %}
+                        <p class = "help_text"> {{ field.help_text}} </p>
+                    {% endif %}
+
+                    {{field.errors}}
+                </div>
+        
+            {%endfor%}
+            
+        </div>
+        <div class = "from-group"> 
+            <button type="submit" class="btn btn-success">Registrar</button>
+        </div>
+
+    </form>
+
+</body>
+
+{%endblock%}
+
+</html>

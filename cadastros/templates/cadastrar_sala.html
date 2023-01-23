@@ -1,0 +1,95 @@
+{%load static%}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/forms.css' %}">
+    <!-- CSS only -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+
+</head>
+{% if request.user.is_authenticated %}
+{%block conteudo%}
+<body>
+   
+    <nav>
+        <ul class="nav justify-content-end">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'salas' %}">Voltar</a>
+            </li>
+        </ul>
+    </nav>
+
+
+    <form method="POST">{% csrf_token %}
+        <fieldset>
+            <div id="login-box">
+                <div class="left">
+                    <h3>Cadastrar Nova sala</h3>
+                    
+                    <div class="form-group">
+                        <label for="{{form.nome.id_for_label}}">{{form.nome.label}}</label><br>
+                        {{form.nome}}
+                    </div><br>
+
+                    <div style="display: flex; justify-content: space-between;">
+                        <div class="form-group">
+                            <label for="{{form.nome.id_for_label}}">{{form.capacidade.label}}</label><br>
+                            {{form.capacidade}}
+                        </div>
+
+                        <div class="form-group">
+                            <label for="{{form.nome.id_for_label}}">{{form.numero.label}}</label><br>
+                            {{form.numero}}
+                        </div>
+                    </div><br>
+
+                    <div style="display: flex; justify-content: space-between;">
+                        <div class="form-group">
+                            <label for="{{form.nome.id_for_label}}">{{form.bloco.label}}</label><br>
+                                {{form.bloco}}
+                        </div>
+
+                        <div class="form-group">
+                            <label for="{{form.tipo.id_for_label}}">{{form.laboratorio.label}}</label><br>
+                                {{form.laboratorio}}
+                        </div>
+                    </div><br>
+                    
+                    <div class="form-group">
+                        <label for="{{form.tipo.id_for_label}}">{{form.tipo.label}}</label><br>
+                            {{form.tipo}}
+                    </div><br>
+
+                    <div class="form-group">
+                        <label for="{{form.nome.id_for_label}}">{{form.descricao.label}}</label><br>
+                            {{form.descricao}}
+                    </div>
+                    <button type="submit" class="botao btn btn-outline-info">Enviar</button>
+                </div>
+                <div class="right">
+                    <img src="{% static 'img/banner_de_formularios.png' %}" width="100%">
+                </div>
+
+            </div>
+        </fieldset>
+
+        
+    </form>
+  
+</body>
+  {%endblock%}
+
+  {%else%}
+        <h1> Você não está autenticado!</h1> 
+        <h4>Por favor faça login ou cadastre-se para ter acesso.</h4>
+                
+        <a href="{% url 'login' %}"> Login</a>
+        <a href="{% url 'register' %}"> Cadastro</a>
+    {% endif %}
+</html>

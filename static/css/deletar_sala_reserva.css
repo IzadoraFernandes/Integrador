@@ -1,0 +1,45 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,500);
+
+body {
+  margin: 0;
+  padding: 0;
+  color: black;
+  font-family: "Roboto", sans-serif;
+}
+
+.left {
+  margin: auto;
+  width: 760px;
+  height: 480px;
+  margin-top: 150px;
+  border-radius: 25px;
+  box-shadow: 0 2px 4px rgba(1, 1, 1, 1);
+  position: relative;
+  padding: 20px;
+  font-size: 23px;
+  display: flex;
+  align-items: center;
+}
+img{
+    width: 100%;
+}
+
+.botao{
+  display: flex;
+  margin: 10px 5px;
+}
+
+@media (min-width: 100px) and (max-width: 770px) {
+  .left{
+    width: 500px;
+    height: 400px;
+    box-shadow: 0 2px 4px rgba(1, 1, 1, 1);
+    font-size: 21px;
+  }
+  .botao{
+    margin: 10px 0px;
+  }
+  img{
+    width: 95%;
+  }
+}

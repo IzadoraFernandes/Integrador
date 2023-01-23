@@ -1,0 +1,48 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Apagar Sala</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/deletar_sala_reserva.css' %}">
+	<!-- CSS only -->
+	<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+
+</head>
+
+{% if request.user.is_authenticated %}
+<body>
+	<nav>
+		<ul class="nav justify-content-end" style="background-color: #2095ff;">
+			<li class="nav-item">
+				<a style="color: white;" class="nav-link" href="{% url 'minhas_reservas' %}">Voltar</a>
+			</li>
+		</ul>
+	</nav>
+
+	<form method="post">
+		{% csrf_token %}
+		<div class="left">
+			<div>
+				<p>Você está tentando <strong>apagar</strong> uma reserva, tem certeza que deseja realizar está ação?</p>
+				<input type="submit" class="botao btn btn-outline-info" value="Confirmar">
+			</div>
+			<div>
+				<img src="{% static 'img/notebook.png' %}">
+			</div>
+		</div>
+	</form>
+
+</body>
+{%else%}
+        <h1> Você não está autenticado!</h1> 
+        <h4>Por favor faça login ou cadastre-se para ter acesso.</h4>
+                
+        <a href="{% url 'login' %}"> Login</a>
+        <a href="{% url 'register' %}"> Cadastro</a>
+{% endif %}
+	
