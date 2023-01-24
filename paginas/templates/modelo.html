@@ -16,24 +16,11 @@
         {% block css%}
 
         {%endblock%}
-<<<<<<< HEAD
 
 </head>
 
-
-{% if request.user.is_authenticated %}
-
 {% block conteudo%}
 {%endblock%}
-
-{%else%}
-<h1> Você não está autenticado!</h1>
-<h4>Por favor faça login ou cadastre-se para ter acesso.</h4>
-
-<a href="{% url 'login' %}"> Login</a>
-<a href="{% url 'register' %}"> Cadastro</a>
-{% endif %}
-
 
 <footer id="rodape" class="d-flex flex-wrap justify-content-between align-items-center py-3 mt-4 border-top" ,
         style="background-color: #2095ff;">
@@ -50,24 +37,3 @@
                                 class="linkrodape nav-link px-2">Localização</a></li>
         </ul>
 </footer>
-=======
-        
-    </head>
-    
-        {% block conteudo%}
-        {%endblock%}
-
-<footer id="rodape" class="d-flex flex-wrap justify-content-between align-items-center py-3 mt-4 border-top", style="background-color: #2095ff">
-    <img class="logorodape" src="{% static 'img/Logo.png' %}" width="5%">
-    <ul class="nav col-md-4 justify-content-between">
-        <li class="nav-item"><a href="https://portal.ifrn.edu.br/campus/paudosferros/novos-ramais.html"
-                class="linkrodape nav-link px-2">Emails<a></li>
-        <li class="nav-item"><a href="https://www.instagram.com/ifrnpaudosferros/"
-                class="linkrodape nav-link px-2">Instagram</a></li>
-        <li class="nav-item"><a href="https://twitter.com/ifrnpdf" class="linkrodape nav-link px-2">Twitter</a></li>
-        <li class="nav-item"><a
-                href="https://www.google.com/maps/dir/-6.1409809,-38.2005265/ifrn+campus+pau+dos+ferros+localiza%C3%A7%C3%A3o/@-6.1426921,-38.2051289,17z/data=!3m1!4b1!4m9!4m8!1m1!4e1!1m5!1m1!1s0x7a4ccc390b80df9:0x6f19062e132788ca!2m2!1d-38.2045783!2d-6.1462578"
-                class="linkrodape nav-link px-2">Localização</a></li>
-    </ul>
-</footer>
->>>>>>> 9ab6bc13cd834246fe2658c84b29a0f6fb12203e

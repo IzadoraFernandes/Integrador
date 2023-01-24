@@ -1,11 +1,13 @@
 from django import forms
 from django.core.mail.message import EmailMessage
-import datetime 
+import datetime
 from .models import Reserva, Sala
 from usuario.models import CustomUser
+from utilits.test import test
 
 class CadastrarReservaModelForm(forms.ModelForm):
-    
+    horario = forms.ChoiceField(choices=test())
+
     class Meta:
         model = Reserva
         fields = [
@@ -22,13 +24,13 @@ class CadastrarReservaModelForm(forms.ModelForm):
             }),
             'data': forms.DateInput(attrs={
                 'placeholder': 'Selecione a opção desejada',
-                'type':'date',
+                'type': 'date',
                 'class': 'form-control'
             }),
             'sala': forms.Select(attrs={
                 'placeholder': 'Selecione a opção desejada',
                 'class': 'form-control'
-                
+
             }),
             'nome': forms.TextInput(attrs={
                 'placeholder': 'Seu nome completo',
@@ -39,21 +41,16 @@ class CadastrarReservaModelForm(forms.ModelForm):
                 'class': 'form-control'
             })
         }
-    """def __init__(self, user=None, *args, **kwargs):
-        usuario(CustomUser, self).__init__(*args,**kwargs)
-        if user.is_authrnticated:
-            print(user)
-        else:
-            print('Não está autenticado')"""
-        
+
+
 class CadastrarSalaModelForm(forms.ModelForm):
-    
+
     class Meta:
         model = Sala
         fields = [
-            'nome', 
+            'nome',
             'numero',
-            'bloco', 
+            'bloco',
             'descricao',
             'capacidade',
             'tipo',
@@ -61,9 +58,9 @@ class CadastrarSalaModelForm(forms.ModelForm):
         ]
 
         widgets = {'nome': forms.TextInput(attrs={
-                'placeholder': 'Ex: Laboratório de Informática III',
-                'class': 'form-control'
-            }),
+            'placeholder': 'Ex: Laboratório de Informática III',
+            'class': 'form-control'
+        }),
             'numero': forms.TextInput(attrs={
                 'class': 'form-control'
             }),
@@ -80,5 +77,5 @@ class CadastrarSalaModelForm(forms.ModelForm):
             'tipo': forms.TextInput(attrs={
                 'class': 'form-control'
             }),
-            
-            }
+
+        }

@@ -1,19 +1,21 @@
 from django.db import models
 from django.urls import reverse_lazy
 #from braces.views import GroupRequiredMixin
-import datetime 
+import datetime
 from usuario.models import CustomUser
 
-class Sala( models.Model):
+
+class Sala(models.Model):
     #group_required = u"Coapac"
-    tipo = models.CharField(max_length=50) 
-    nome = models.CharField(max_length = 250, unique=True)
-    numero = models.IntegerField(verbose_name= "Número", unique=True)
-    bloco = models.CharField(max_length= 10, verbose_name="Bloco")
-    descricao = models.TextField(max_length= 100, verbose_name="Descrição")
-    capacidade = models.IntegerField(verbose_name= "Capacidade")
-    laboratorio = models.BooleanField(verbose_name= "É laboratório?", default=False)
-    
+    tipo = models.CharField(max_length=50)
+    nome = models.CharField(max_length=250, unique=True)
+    numero = models.IntegerField(verbose_name="Número", unique=True)
+    bloco = models.CharField(max_length=10, verbose_name="Bloco")
+    descricao = models.TextField(max_length=100, verbose_name="Descrição")
+    capacidade = models.IntegerField(verbose_name="Capacidade")
+    laboratorio = models.BooleanField(
+        verbose_name="É laboratório?", default=False)
+
     def __str__(self):
         return "{} ({})".format(self.nome, self.bloco)
 
@@ -40,15 +42,15 @@ class Reserva(models.Model):
         ('20:40 - 21:25', '20:40 - 21:25'),
         ('21:25 - 22:10', '21:25 - 22:10'),
     )
-   
+
     #group_required = u"Professores"
 
-    descricao = models.TextField(max_length= 100, verbose_name="Descrição", blank=True)
+    descricao = models.TextField(
+        max_length=100, verbose_name="Descrição", blank=True)
     data = models.DateField(blank='False', null='False')
-    horario = models.CharField(max_length=15, choices= HORARIOS)
+    horario = models.CharField(max_length=15, choices=HORARIOS)
     sala = models.ForeignKey(Sala, on_delete=models.CASCADE)
     #usuario = models.ForeignKey(CustomUser, on_delete= models.CASCADE)
 
-            
     def __str__(self):
-        return "{} ({})".format(self.nome, self.data)
+        return "{}".format(self.data)
