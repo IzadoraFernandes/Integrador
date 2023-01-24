@@ -13,8 +13,7 @@ class Sala(models.Model):
     bloco = models.CharField(max_length=10, verbose_name="Bloco")
     descricao = models.TextField(max_length=100, verbose_name="Descrição")
     capacidade = models.IntegerField(verbose_name="Capacidade")
-    laboratorio = models.BooleanField(
-        verbose_name="É laboratório?", default=False)
+    laboratorio = models.BooleanField(verbose_name="É laboratório?", default=False)
 
     def __str__(self):
         return "{} ({})".format(self.nome, self.bloco)
@@ -45,8 +44,7 @@ class Reserva(models.Model):
 
     #group_required = u"Professores"
 
-    descricao = models.TextField(
-        max_length=100, verbose_name="Descrição", blank=True)
+    descricao = models.TextField(max_length=100, verbose_name="Descrição", blank=True)
     data = models.DateField(blank='False', null='False')
     horario = models.CharField(max_length=15, choices=HORARIOS)
     sala = models.ForeignKey(Sala, on_delete=models.CASCADE)
