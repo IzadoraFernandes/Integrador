@@ -6,11 +6,12 @@ from .models import Reserva, Sala
 from usuario.models import CustomUser
 from django.shortcuts import render, HttpResponseRedirect, get_object_or_404
 from utilits.test import test
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 #from braces.views import GroupRequiredMixin
 
 
-class CadastrarReservaView(CreateView):  # GroupRequiredMixin
+class CadastrarReservaView(LoginRequiredMixin, CreateView):  # GroupRequiredMixin
     model = Reserva
     #group_required = u"Professores"
     form_class = CadastrarReservaModelForm
@@ -21,15 +22,10 @@ class CadastrarReservaView(CreateView):  # GroupRequiredMixin
         salas = Sala.objects.all()
         return render(request, 'cadastrar_reserva.html', {'form': self.get_form(), 'salinhas': salas})
 
-    """def form_valid(self, form):
-        # Define o usuário como usuário logado
-        form.instance.usuario = self.request.user
-        url = super().form_valid(form)
-        # código a fazer depois de salvar objeto no banco
-        #self.object.atributo = “algo”
-        # Salva o objeto novamente
-        self.object.save()
-        return url"""
+
+    def post(self, request, *args, **kwargs):
+        
+        return super().post(request, *args, **kwargs)
 
     """def __init__(self, user=None, *args, **kwargs):
         super(CustomUser, self).__init__(*args, **kwargs)
@@ -55,15 +51,30 @@ class CadastrarReservaView(CreateView):  # GroupRequiredMixin
         self.object = form.save()
         return super().form_valid(form)
 
+    def get_form_kwargs(self):
 
-class ReservaListView(ListView):  # GroupRequiredMixin
+        kwargs = super().get_form_kwargs()
+        kwargs['request'] = self.request
+
+        return kwargs
+
+
+"""class ReservaListView(ListView):  # GroupRequiredMixin
     model = Reserva
     #group_required = u"Professores"
     template_name = 'minhas_reservas.html'
-    allow_empty = True
+    allow_empty = True"""
+
+def listaDeReserva( request):
+    template_name = 'minhas_reservas.html'
+    object_list = Reserva.objects.filter(usuario=request.user)
+    context = {
+        "object_list":  object_list,
+    }   
+    return render(request, template_name, context)
 
 
-class ReservaUpdateView(UpdateView):
+class ReservaUpdateView(LoginRequiredMixin, UpdateView):
     model = Reserva
     form_class = CadastrarReservaModelForm
     template_name = 'cadastrar_reserva.html'
@@ -84,35 +95,40 @@ class ReservaUpdateView(UpdateView):
         return super().get_context_data(**kwargs)
 
 
-class ReservaDeleteView(DeleteView):
+class ReservaDeleteView(LoginRequiredMixin, DeleteView):
     model = Reserva
     template_name = 'delete_reserva.html'
     success_url = reverse_lazy('minhas_reservas')
 
 
-class CadastrarSalaView(CreateView):
+class CadastrarSalaView(LoginRequiredMixin, CreateView):
     model = Sala
     #group_required = u"Coapac"
     form_class = CadastrarSalaModelForm
     success_url = reverse_lazy('salas')
     template_name = 'cadastrar_sala.html'
+    
+    def post(self, request , *args, **kwargs ):
+        print("qualquer coisa")
+        return super().post(request, *args, **kwargs)
 
+    
 
-class SalasListView(ListView):
+class SalasListView(LoginRequiredMixin, ListView):
     model = Sala
     queryset = Sala.objects.all()
     template_name = 'salas.html'
     allow_empty = True
 
 
-class SalasUpdateView(UpdateView):
+class SalasUpdateView(LoginRequiredMixin, UpdateView):
     model = Sala
     form_class = CadastrarSalaModelForm
     template_name = 'cadastrar_sala.html'
     success_url = reverse_lazy('salas')
 
 
-class SalasDeleteView(DeleteView):
+class SalasDeleteView(LoginRequiredMixin, DeleteView):
     model = Sala
     template_name = 'delete_sala.html'
     success_url = reverse_lazy('salas')

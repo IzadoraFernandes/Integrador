@@ -48,7 +48,7 @@ class Reserva(models.Model):
     data = models.DateField(blank='False', null='False')
     horario = models.CharField(max_length=15, choices=HORARIOS)
     sala = models.ForeignKey(Sala, on_delete=models.CASCADE)
-    #usuario = models.ForeignKey(CustomUser, on_delete= models.CASCADE)
+    usuario = models.ForeignKey(CustomUser, on_delete= models.CASCADE)
 
     def __str__(self):
         return "{}".format(self.data)

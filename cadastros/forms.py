@@ -14,7 +14,8 @@ class CadastrarReservaModelForm(forms.ModelForm):
             'descricao',
             'data',
             'horario',
-            'sala'
+            'sala', 
+            'usuario'
         ]
 
         widgets = {
@@ -39,9 +40,16 @@ class CadastrarReservaModelForm(forms.ModelForm):
             'descricao': forms.Textarea(attrs={
                 'placeholder': 'Anotações',
                 'class': 'form-control'
+            }),
+            'usuario': forms.Select(attrs={
+                'hidden': True,
             })
         }
 
+    def __init__(self, *args, **kwargs):
+        self.request = kwargs.pop("request")
+        super(CadastrarReservaModelForm, self).__init__(*args, **kwargs)
+        self.fields['usuario'].initial = self.request.user
 
 class CadastrarSalaModelForm(forms.ModelForm):
 

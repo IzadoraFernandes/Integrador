@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.views.generic import CreateView, DeleteView, UpdateView, ListView
 from cadastros.models import Reserva, Sala
 from django.views.generic import DeleteView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 def index(request):
@@ -10,7 +11,7 @@ def index(request):
 def agenda(request):
     return render(request, 'agenda.html')
 
-class ReservaSalaListView(ListView):
+class ReservaSalaListView(LoginRequiredMixin, ListView):
     model = Reserva
     queryset = Reserva.objects.all()
     template_name = 'agenda.html'

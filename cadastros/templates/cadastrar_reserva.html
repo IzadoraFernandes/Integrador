@@ -24,7 +24,7 @@
         </ul>
     </nav>
    
-
+    {{form.errors}}
     <form method="post">{% csrf_token %}
         <fieldset>
 
@@ -55,6 +55,7 @@
                         <label for="{{form.nome.id_for_label}}">{{form.descricao.label}}</label><br>
                         {{form.descricao}}
                     </div>
+                    {{form.usuario}}
         
                     <button type="submit" class="botao btn btn-outline-info">Enviar</button>
                 </div>

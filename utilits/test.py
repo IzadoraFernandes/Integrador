@@ -3,12 +3,16 @@ from pprint import pprint
 
 
 def test():
-
+    
     horarioMarcados = []
     horariosDisponiveis = []
-    print("tttt"*50)
+    
     for i in Reserva.objects.all():
         horarioMarcados.append((i.horario, i.horario))
+        print( i.data, i.horario)
+
+    #for k in Reserva.data.field:
+        
 
     for j in Reserva.horario.field.choices:
 
@@ -17,6 +21,6 @@ def test():
 
     # pprint(horarioMarcados)
     # print("#"*50)
-    pprint(horariosDisponiveis)
+    #pprint(horariosDisponiveis)
 
     return horariosDisponiveis
