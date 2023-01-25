@@ -11,7 +11,7 @@ class Sala(models.Model):
     nome = models.CharField(max_length=250, unique=True)
     numero = models.IntegerField(verbose_name="Número", unique=True)
     bloco = models.CharField(max_length=10, verbose_name="Bloco")
-    descricao = models.TextField(max_length=100, verbose_name="Descrição")
+    descricao = models.TextField(max_length=100, verbose_name="Descrição", blank=True)
     capacidade = models.IntegerField(verbose_name="Capacidade")
     laboratorio = models.BooleanField(verbose_name="É laboratório?", default=False)
 

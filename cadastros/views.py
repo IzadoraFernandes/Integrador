@@ -8,12 +8,9 @@ from django.shortcuts import render, HttpResponseRedirect, get_object_or_404
 from utilits.test import test
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-#from braces.views import GroupRequiredMixin
 
-
-class CadastrarReservaView(LoginRequiredMixin, CreateView):  # GroupRequiredMixin
+class CadastrarReservaView(LoginRequiredMixin, CreateView): 
     model = Reserva
-    #group_required = u"Professores"
     form_class = CadastrarReservaModelForm
     success_url = reverse_lazy('minhas_reservas')
     template_name = 'cadastrar_reserva.html'
@@ -27,27 +24,7 @@ class CadastrarReservaView(LoginRequiredMixin, CreateView):  # GroupRequiredMixi
         
         return super().post(request, *args, **kwargs)
 
-    """def __init__(self, user=None, *args, **kwargs):
-        super(CustomUser, self).__init__(*args, **kwargs)
-        # my_field = MyModel.objects.filter(user=user)
-        if user.is_authenticated:
-            print(user)
-        else:
-            print('Não')"""
-
     def form_valid(self, form):
-        """salas = Sala.objects.all()
-        self.object = form
-        print(self.object)
-        '''print(self.object.data)
-        print(self.object.numero)
-        print(self.object.sala.numero)
-        print(self.object.sala)
-        print(self.object.sala.id)'''
-        for salinha in salas:
-            if self.object.data == salinha.data and self.object.horario == salinha.horario and self.object.sala.id == salinha.id:
-                print('não salva')
-                break"""
         self.object = form.save()
         return super().form_valid(form)
 
@@ -65,7 +42,7 @@ class CadastrarReservaView(LoginRequiredMixin, CreateView):  # GroupRequiredMixi
     template_name = 'minhas_reservas.html'
     allow_empty = True"""
 
-def listaDeReserva( request):
+def listaDeReserva(request):
     template_name = 'minhas_reservas.html'
     object_list = Reserva.objects.filter(usuario=request.user)
     context = {
@@ -82,8 +59,7 @@ class ReservaUpdateView(LoginRequiredMixin, UpdateView):
 
     # Altera a query para buscar o objeto do usuário logado
     def get_object(self, queryset=None):
-        self.object = get_object_or_404(
-            Reserva, pk=self.kwargs['pk'], usuario=self.request.user)
+        self.object = get_object_or_404(Reserva, pk=self.kwargs['pk'], usuario=self.request.user)
         return self.object
 
     def get_context_data(self, **kwargs):
@@ -94,6 +70,13 @@ class ReservaUpdateView(LoginRequiredMixin, UpdateView):
             kwargs["form"] = self.get_form()
         return super().get_context_data(**kwargs)
 
+    def get_form_kwargs(self):
+
+        kwargs = super().get_form_kwargs()
+        kwargs['request'] = self.request
+
+        return kwargs
+
 
 class ReservaDeleteView(LoginRequiredMixin, DeleteView):
     model = Reserva
@@ -103,11 +86,11 @@ class ReservaDeleteView(LoginRequiredMixin, DeleteView):
 
 class CadastrarSalaView(LoginRequiredMixin, CreateView):
     model = Sala
-    #group_required = u"Coapac"
     form_class = CadastrarSalaModelForm
     success_url = reverse_lazy('salas')
     template_name = 'cadastrar_sala.html'
     
+
     def post(self, request , *args, **kwargs ):
         print("qualquer coisa")
         return super().post(request, *args, **kwargs)

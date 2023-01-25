@@ -6,6 +6,7 @@ from usuario.models import CustomUser
 from utilits.test import test
 
 class CadastrarReservaModelForm(forms.ModelForm):
+    
     horario = forms.ChoiceField(choices=test())
 
     class Meta:
@@ -47,7 +48,7 @@ class CadastrarReservaModelForm(forms.ModelForm):
         }
 
     def __init__(self, *args, **kwargs):
-        self.request = kwargs.pop("request")
+        self.request = kwargs.get("request")
         super(CadastrarReservaModelForm, self).__init__(*args, **kwargs)
         self.fields['usuario'].initial = self.request.user
 
