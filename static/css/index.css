@@ -6,7 +6,7 @@
 }
 
 body, main {
-  font-size: 20px;
+  font-size: 22px;
 }
 
 main {
@@ -24,7 +24,7 @@ main {
   align-items: center !important;
   justify-content: center;
   color: white;
-  padding: 8px 0px 25px 0px;
+  padding: 25px 0px 45px 0px;
 }
 
 
@@ -46,7 +46,7 @@ a {
   margin: 0px 10px;
 }
 #sobre {
-  padding: 70px;
+  padding: 150px;
 }
 
 @media (max-width: 900px) {
