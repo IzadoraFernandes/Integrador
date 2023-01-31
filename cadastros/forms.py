@@ -64,8 +64,7 @@ class CadastrarSalaModelForm(forms.ModelForm):
             'numero': forms.TextInput(attrs={
                 'class': 'form-control'
             }),
-            'bloco': forms.TextInput(attrs={
-                'placeholder': 'Ex: 01',
+            'bloco': forms.Select(attrs={
                 'class': 'form-control'
             }),
             'descricao': forms.Textarea(attrs={
@@ -74,7 +73,7 @@ class CadastrarSalaModelForm(forms.ModelForm):
             'capacidade': forms.TextInput(attrs={
                 'class': 'form-control'
             }),
-            'tipo': forms.TextInput(attrs={
+            'tipo': forms.Select(attrs={
                 'class': 'form-control'
             }),
 

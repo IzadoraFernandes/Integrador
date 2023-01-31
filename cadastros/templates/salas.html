@@ -46,60 +46,61 @@
         </div>
     </header>
 
+    
+    <main>
+        <section class="container">
+            {% for object in object_list%}
+            <div class="card mb-3"
+                style="max-width: 80rem; flex-direction: row; display: flex; justify-content: space-between">
 
-    <section class="container">
-        {% for object in object_list%}
-        <div class="card mb-3"
-            style="max-width: 80rem; flex-direction: row; display: flex; justify-content: space-between">
+                <div class="card-body">
+                    <ul style="list-style: none; align-items: center; justify-content: center;">
+                        <a href="{% url 'agenda' %}" style="color: black !important;">
+                            <h5 class="card-title">Sala</h5>
+                            <li>{{object.numero}} - {{object.nome}}</li>
+                        </a>
+                    </ul>
+                </div>
+                <div class="card-body">
+                    <ul style="list-style: none;">
+                        <a href="{% url 'agenda' %}" style="color: black !important;">
+                            <h5 class="card-title">Bloco</h5>
+                            <li>{{object.bloco}}</li>
+                        </a>
+                    </ul>
+                </div>
 
-            <div class="card-body">
-                <ul style="list-style: none; align-items: center; justify-content: center;">
-                    <a href="{% url 'agenda' %}" style="color: black !important;">
-                        <h5 class="card-title">Sala</h5>
-                        <li>{{object.numero}} - {{object.nome}}</li>
+                <div class="card-body"><br>
+                    <a href="{% url 'update-salas' object.id %}">
+                        <img src="{% static 'img/lapis.preto.png' %}">
                     </a>
-                </ul>
-            </div>
-            <div class="card-body">
-                <ul style="list-style: none;">
-                    <a href="{% url 'agenda' %}" style="color: black !important;">
-                        <h5 class="card-title">Bloco</h5>
-                        <li>{{object.bloco}}</li>
+
+                    <a href="{% url 'delete-salas' object.id %}">
+                        <img src="{% static 'img/lixeira.preto.png' %}">
                     </a>
-                </ul>
+                </div>
+
             </div>
+            {%endfor%}
 
-            <div class="card-body"><br>
-                <a href="{% url 'update-salas' object.id %}">
-                    <img src="{% static 'img/lapis.preto.png' %}">
-                </a>
-
-                <a href="{% url 'delete-salas' object.id %}">
-                    <img src="{% static 'img/lixeira.preto.png' %}">
-                </a>
-            </div>
-
-        </div>
-        {%endfor%}
-
-    </section>
-
+        </section>
+    </main>
     {%endblock%}
+
 
 </body>
 
-<<<<<<< HEAD
 
 
-=======
+
 {%else%}
-        <h1> Você não está autenticado!</h1> 
-        <h4>Por favor faça login ou cadastre-se para ter acesso.</h4>
-                
-        <a href="{% url 'login' %}"> Login</a>
-        <a href="{% url 'register' %}"> Cadastro</a>
+<h1> Você não está autenticado!</h1>
+<h4>Por favor faça login ou cadastre-se para ter acesso.</h4>
+
+<a href="{% url 'login' %}"> Login</a>
+<a href="{% url 'register' %}"> Cadastro</a>
 {% endif %}
->>>>>>> 9ab6bc13cd834246fe2658c84b29a0f6fb12203e
+
 
 <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
 <script src="{% static 'js/bootstrap.min.js' %}"></script>

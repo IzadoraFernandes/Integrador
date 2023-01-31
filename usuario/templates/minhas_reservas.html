@@ -27,6 +27,9 @@
                         <a class="nav-link" href="{% url 'salas' %}">Salas</a>
                     </div>
                     <div class="nav-item">
+                        <a class="nav-link" href="{% url 'cadastrar_reserva' %}">Adicionar reservas</a>
+                    </div>
+                    <div class="nav-item">
                         <a class="nav-link" href="{% url 'login' %}">Sair</a>
                     </div>
                 </div>
@@ -48,55 +51,57 @@
         </div>
     </header>
 
+    <body>
+        <main>
+            <section class="container">
+                {% for object in object_list%}
+                <div class="card mb-3"
+                    style="max-width: 80rem; flex-direction: row; display: flex; justify-content: space-between">
 
-    <section class="container">
-        {% for object in object_list%}
-        <div class="card mb-3"
-            style="max-width: 80rem; flex-direction: row; display: flex; justify-content: space-between">
+                    <div class="card-body" style="padding: 10px;">
+                        <ul style="list-style: none;">
+                            <h5 class="card-title">Laboratório</h5>
+                            <li>{{object.sala.numero}} - {{object.sala.nome}}</li>
+                        </ul>
+                    </div>
 
-            <div class="card-body" style="padding: 10px;">
-                <ul style="list-style: none;">
-                    <h5 class="card-title">Laboratório</h5>
-                    <li>{{object.sala.numero}} - {{object.sala.nome}}</li>
-                </ul>
-            </div>
+                    <div class="card-body">
+                        <ul style="list-style: none;">
+                            <h5 class="card-title">Data e Horário</h5>
+                            <li>{{ object.data}} - {{ object.horario}}</li>
+                        </ul>
+                    </div>
 
-            <div class="card-body">
-                <ul style="list-style: none;">
-                    <h5 class="card-title">Data e Horário</h5>
-                    <li>{{ object.data}} - {{ object.horario}}</li>
-                </ul>
-            </div>
+                    <div class="card-body"><br>
+                        <a href="{% url 'update-reserva' object.id %}">
+                            <img src="{% static 'img/lapis.preto.png' %}">
+                        </a>
 
-            <div class="card-body"><br>
-                <a href="{% url 'update-reserva' object.id %}">
-                    <img src="{% static 'img/lapis.preto.png' %}">
-                </a>
+                        <a href="{% url 'delete-reserva' object.id %}">
+                            <img src="{% static 'img/lixeira.preto.png' %}">
+                        </a>
+                    </div>
 
-                <a href="{% url 'delete-reserva' object.id %}">
-                    <img src="{% static 'img/lixeira.preto.png' %}">
-                </a>
-            </div>
+                </div>
+                {% endfor %}
+            </section>
+        </main>
 
-        </div>
-        {% endfor %}
-    </section>
+        {%endblock%}
 
-
-    {%endblock%}
-</body>
+    </body>
 
 
-{%else%}
-<h1> Você não está autenticado!</h1>
-<h4>Por favor faça login ou cadastre-se para ter acesso.</h4>
+    {%else%}
+    <h1> Você não está autenticado!</h1>
+    <h4>Por favor faça login ou cadastre-se para ter acesso.</h4>
 
-<a href="{% url 'login' %}"> Login</a>
-<a href="{% url 'register' %}"> Cadastro</a>
-{% endif %}
-<!-- JavaScript Bundle with Popper -->
-<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
-<script src="{% static 'js/bootstrap.min.js' %}"></script>
-<script src="{% static 'js/popper.min.js' %}"></script>
+    <a href="{% url 'login' %}"> Login</a>
+    <a href="{% url 'register' %}"> Cadastro</a>
+    {% endif %}
+    <!-- JavaScript Bundle with Popper -->
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
 
-</html>
+    </html>

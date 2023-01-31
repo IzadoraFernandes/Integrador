@@ -1,3 +1,6 @@
+body{
+  font-size: 20px;
+}
 .informacaosala {
   display: flex;
   justify-content: space-between;
@@ -5,9 +8,6 @@
   color: white;
   padding: 5px 14px;
   border-radius: 10px;
-}
-#rodape {
-  background-color: #2095ff;
 }
 a {
   color: white !important;

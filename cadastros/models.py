@@ -7,10 +7,21 @@ from usuario.models import CustomUser
 
 class Sala(models.Model):
     #group_required = u"Coapac"
-    tipo = models.CharField(max_length=50)
+    TIPOS = (
+        ('Alimentos', 'Alimentos'),
+        ('Apicultura', 'Apicultura'),
+        ('Informática', 'Informática'),
+        ('Quimíca', 'Quimíca'),
+    )
+    BLOCOS = (
+        ('Bloco 02', 'Bloco 02'),
+        ('Bloco 03', 'Bloco 03'),
+    )
+    
     nome = models.CharField(max_length=250, unique=True)
     numero = models.IntegerField(verbose_name="Número", unique=True)
-    bloco = models.CharField(max_length=10, verbose_name="Bloco")
+    bloco = models.CharField(verbose_name="Bloco", max_length=8, choices=BLOCOS)
+    tipo = models.CharField(verbose_name="Tipo", max_length=13, choices=TIPOS)
     descricao = models.TextField(max_length=100, verbose_name="Descrição")
     capacidade = models.IntegerField(verbose_name="Capacidade")
     laboratorio = models.BooleanField(verbose_name="É laboratório?", default=False)
