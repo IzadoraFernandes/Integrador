@@ -1,12 +1,12 @@
 from django.urls import path
 #from . import views
-from .views import  CadastrarReservaView, ReservaListView, ReservaUpdateView,ReservaDeleteView, CadastrarSalaView, SalasListView, SalasUpdateView, SalasDeleteView
+from .views import  CadastrarReservaView, listaDeReserva, ReservaUpdateView,ReservaDeleteView, CadastrarSalaView, SalasListView, SalasUpdateView, SalasDeleteView
 
 urlpatterns = [
     
     #path('cadastrar_lab/', Cadastrar_labView.as_view(), name = 'cadastrar_lab'),
     path('cadastrar_reserva/', CadastrarReservaView.as_view(), name = 'cadastrar_reserva'),
-    path('teste/', ReservaListView.as_view(), name = 'teste'),
+    path('teste/', listaDeReserva, name = 'teste'),
     path('<int:pk>/update-reserva/', ReservaUpdateView.as_view(), name='update-reserva'),
     path('<int:pk>/delete-reserva/', ReservaDeleteView.as_view(), name='delete-reserva'),
     path('cadastrar_sala/', CadastrarSalaView.as_view(), name = 'cadastrar_sala'),
