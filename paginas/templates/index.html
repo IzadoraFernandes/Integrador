@@ -2,20 +2,48 @@
 
 {% load static %}
 
- {%block titulo %}
- <title>Index</title>
- {%endblock%}
+{%block titulo %}
+<title>Index</title>
+{%endblock%}
 
 {% block css %}
 <link rel="stylesheet" href="{% static 'css/index.css' %}">
 {% endblock %}
 
 
-
 {% block conteudo %}
 
+<style>
+    .hero-image {
+        background-image: url("{%static 'img/teste.jpg'%}");
+        height: 650px;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: relative;
+        opacity: 0.8;
+    }
+
+    .hero-text {
+        text-align: center;
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+       
+    }
+    .botao{
+        background-color: #2095ff;
+        border: none;
+        border-radius: 15px;
+        padding: 10px;
+        color: white;
+    }
+</style>
+
+
 <body>
-    
+
 
     <nav>
         <div class="barranav">
@@ -31,9 +59,6 @@
                     <a class="nav-link" href="#funcionalidades">Funcionalidades</a>
                 </div>
                 <div class="nav-item">
-                    <a href="{% url 'register' %}" class="nav-link">Cadastro</a>
-                </div>
-                <div class="nav-item">
                     <a href="{% url 'login' %}" class="nav-link">Login</a>
                 </div>
 
@@ -43,15 +68,17 @@
     </nav>
 
     <header>
-        <div class="cabecalho">
-                <div class="titulo" style="font-size: 70px !important;">
-                    <h1>Um Software de Gerenciamento Laboratorial</h1>
-                </div>
-                <div class="imgheader">
-                    <img src="{% static 'img/notebook.png' %}" width="50%">
-                </div>
-        </div>
+
+        <div class="hero-image">
+            <div class="hero-text">
+              <h1 style="font-size:60px">Um Software de Gerenciamento
+                Laboratorial !</h1>
+              <button class="botao"><a href="{% url 'register' %}">Cadastre-se</a></button>
+            </div>
+          </div>
     </header>
+
+
 
     <section id="sobre">
         <div class="container">
@@ -61,7 +88,7 @@
                 </div>
                 <div class="col">
                     <br>
-                    <h3>Sobre o Sistema</h3><br>
+                    <h2>Sobre o Sistema</h2><br>
                     <p>Desenvolvido com objetivo gerenciar salas de Laboratório,
                         o GL permite que os usuários consigam reservar salas de forma mais fácil e prática.<br><br>
                         Nele há informações como: tipo de laboratório, sala, horário e data da reserva, nome do docente,
@@ -73,72 +100,89 @@
     </section>
 
     <section id="funcionalidades">
-        <div style="margin-top: 10px ;">
-            <h4>Funcionalidades das reservas</h4>
-        </div>
+            <div style="margin-top: 20px ;">
+                <h1>Funcionalidades das reservas</h1>
+            </div>
+            <div>
+                <h4>Confira os principais recursos da solução.</h4>
+            </div>
+    </section>
+
+    <div
+        style="display: flex; align-items: center; justify-content: space-evenly; background-color: #2095ff; padding: 0px 0px 70px 0px;">
         <div>
-            <p>Confira os principais recursos da solução.</p>
+            <div class="card border-light mb-3" style="max-width: 20rem; align-items: center;">
+                <div class="card-body">
+                    <img src="{%static 'img/Adicionar.png' %}" width="50%" style="margin-left: 65px ;">
+                </div>
+                <div class="card-body">
+                    <h4 class="card-title" style="color: black;">Adicionar Reservas</h4>
+                </div>
+            </div>
         </div>
+
+        <div>
+            <div class="card border-light mb-3" style="max-width: 20rem; align-items: center;">
+                <div class="card-body">
+                    <img src="{%static 'img/Editar.png' %}" width="50%" style="margin-left: 65px ;">
+                </div>
+                <div class="card-body">
+                    <h4 class="card-title" style="color: black;">Modificar Reservas</h4>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <div class="card border-light mb-3" style="max-width: 20rem; align-items: center;">
+                <div class="card-body">
+                    <img src="{%static 'img/Excluir.png' %}" width="50%" style="margin-left:65px ;">
+                </div>
+                <div class="card-body">
+                    <h4 class="card-title" style="color: black;">Cancelar Reservas</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section
+        style="display: flex; align-items: baseline; padding: 90px; justify-content: space-around; font-size: 24px;">
+        <div class="card mb-3" style="max-width: 18rem; background-color: #ffff; border: none;">
+            <h3 class="card-body">Adicionar reservas</h3>
+            <div class="card-body">
+                <p class="card-text">Será possível ser escolhido um laboratório para
+                    realizar o agendamento com horário e dia definido para
+                    uma determinada turma</p>
+            </div>
+        </div>
+
+        <div class="card mb-3" style="max-width: 18rem; background-color: #ffff; border: none;">
+            <h3 class="card-body">Modificar reservas</h3>
+            <div class="card-body">
+                <p class="card-text">Há possibilidade de fazer modificação em alguma informação sobre uma
+                    reserva que já esteja cadastrada no sistema, como: data, horário e descrição.</p>
+
+            </div>
+        </div>
+
+        <div class="card mb-3" style="max-width: 18rem; background-color: #ffff; border: none;">
+            <h3 class="card-body">Cancelar reservas</h3>
+            <div class="card-body">
+                <p class="card-text">Poderá fazer o cancelamento de uma reserva de laboratório,
+                    tornando assim o lugar disponível para outro docente ocupar.</p>
+            </div>
+        </div>
+
     </section>
 
-    <section class="descricao">
-
-        <div class="card mb-3" style="max-width: 800px;">
-            <div class="row g-0">
-                <div class="col-md-4">
-                    <img src="{% static 'img/Adicionar.png' %}" class="img-fluid rounded-start" alt="...">
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <br><h5 class="card-title">Adicionar reservas</h5>
-                        <p class="card-text">Será possível ser escolhido um laboratório para
-                            realizar o agendamento com horário e dia definido para
-                            uma determinada turma</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="card mb-3" style="max-width: 800px;">
-            <div class="row g-0">
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <br><h5 class="card-title">Modificar reservas</h5>
-                        <p class="card-text">Há possibilidade de fazer modificação em alguma informação sobre uma
-                            reserva que já esteja cadastrada no sistema, como: data, horário e descrição.</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <img src="{% static 'img/Editar.png' %}" class="img-fluid rounded-start" alt="...">
-                </div>
-            </div>
-        </div>
-
-        <div class="card mb-3" style="max-width: 800px;">
-            <div class="row g-0">
-                <div class="col-md-4">
-                    <img src="{% static 'img/Adicionar.png' %}" class="img-fluid rounded-start" alt="...">
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <br><h5 class="card-title">Cancelar reservas</h5>
-                        <p class="card-text">Poderá fazer o cancelamento de uma reserva de laboratório,
-                            tornando assim o lugar disponível para outro docente ocupar.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
 
 
-    
 
 </body>
 {%endblock%}
 
-    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
-    <script src="{% static 'js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'js/popper.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/popper.min.js' %}"></script>
 
 </html>

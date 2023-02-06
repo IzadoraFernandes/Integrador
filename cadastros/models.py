@@ -3,14 +3,26 @@ from django.urls import reverse_lazy
 #from braces.views import GroupRequiredMixin
 import datetime
 from usuario.models import CustomUser
-
+from django.forms import ValidationError
+from datetime import date
 
 class Sala(models.Model):
     #group_required = u"Coapac"
-    tipo = models.CharField(max_length=50)
+    TIPOS = (
+        ('Alimentos', 'Alimentos'),
+        ('Apicultura', 'Apicultura'),
+        ('Informática', 'Informática'),
+        ('Quimíca', 'Quimíca'),
+    )
+    BLOCOS = (
+        ('Bloco 02', 'Bloco 02'),
+        ('Bloco 03', 'Bloco 03'),
+    )
+    
     nome = models.CharField(max_length=250, unique=True)
     numero = models.IntegerField(verbose_name="Número", unique=True)
-    bloco = models.CharField(max_length=10, verbose_name="Bloco")
+    bloco = models.CharField(verbose_name="Bloco", max_length=8, choices=BLOCOS)
+    tipo = models.CharField(verbose_name="Tipo", max_length=13, choices=TIPOS)
     descricao = models.TextField(max_length=100, verbose_name="Descrição")
     capacidade = models.IntegerField(verbose_name="Capacidade")
     laboratorio = models.BooleanField(verbose_name="É laboratório?", default=False)
@@ -44,11 +56,24 @@ class Reserva(models.Model):
 
     #group_required = u"Professores"
 
+    
+    """def validar_dia(value):
+        today = date.today()
+        weekday = date.fromisoformat(f'{value}').weekday()
+
+        if value < today: 
+            raise('Não é possivel escolher um data passada.') #colocar modal
+        if (weekday == 5) or (weekday == 6):
+            raise('Escolha um dia útil da semana.') #seg a sex"""
+
     descricao = models.TextField(max_length=100, verbose_name="Descrição", blank=True)
-    data = models.DateField(blank='False', null='False')
+    #data = models.DateField(blank='False', null='False')
+    data = models.DateField(help_text="Insira uma data para agenda")
     horario = models.CharField(max_length=15, choices=HORARIOS)
     sala = models.ForeignKey(Sala, on_delete=models.CASCADE)
     #usuario = models.ForeignKey(CustomUser, on_delete= models.CASCADE)
-
+    nome = models.TextField(max_length=50, verbose_name="Nome")
     def __str__(self):
         return "{}".format(self.data)
+
+  

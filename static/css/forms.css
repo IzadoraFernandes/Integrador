@@ -9,16 +9,19 @@ body {
   color: black;
   font-family: "Roboto", sans-serif;
 }
+a {
+  color: white !important;
+  text-decoration: none;
+}
 
 #login-box {
   position: relative;
   margin: auto;
   width: 1100px;
-  height: 780px;
-  background: #fff;
-  border-radius: 2px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  height: 746px;
+  font-size: 15px !important; 
 }
+
 
 .left {
   position: absolute;
@@ -27,22 +30,18 @@ body {
   box-sizing: border-box;
   padding: 20px;
   width: 500px;
-  height: 780px;
-  background-color: white;
+  height: 700px;
 }
 .right {
   position: absolute;
   top: 0;
   right: 0;
-  box-sizing: border-box;
-  padding: 160px 70px;
+  padding: 160px 00px;
   width: 500px;
-  height: 780px;
+  height: 700px;
   background-size: cover;
   background-position: center;
-  border-radius: 0 2px 2px 0;
-  background-color: #2095ff;
-}
+ }
 
 .botao {
   display: flex;

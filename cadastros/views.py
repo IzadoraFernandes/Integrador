@@ -6,6 +6,7 @@ from .models import Reserva, Sala
 from usuario.models import CustomUser
 from django.shortcuts import render, HttpResponseRedirect, get_object_or_404
 from utilits.test import test
+from datetime import date
 
 #from braces.views import GroupRequiredMixin
 
@@ -39,21 +40,8 @@ class CadastrarReservaView(CreateView):  # GroupRequiredMixin
         else:
             print('Não')"""
 
-    def form_valid(self, form):
-        """salas = Sala.objects.all()
-        self.object = form
-        print(self.object)
-        '''print(self.object.data)
-        print(self.object.numero)
-        print(self.object.sala.numero)
-        print(self.object.sala)
-        print(self.object.sala.id)'''
-        for salinha in salas:
-            if self.object.data == salinha.data and self.object.horario == salinha.horario and self.object.sala.id == salinha.id:
-                print('não salva')
-                break"""
-        self.object = form.save()
-        return super().form_valid(form)
+    
+
 
 
 class ReservaListView(ListView):  # GroupRequiredMixin
@@ -70,10 +58,10 @@ class ReservaUpdateView(UpdateView):
     success_url = reverse_lazy('minhas_reservas')
 
     # Altera a query para buscar o objeto do usuário logado
-    def get_object(self, queryset=None):
+    '''def get_object(self, queryset=None):
         self.object = get_object_or_404(
             Reserva, pk=self.kwargs['pk'], usuario=self.request.user)
-        return self.object
+        return self.object'''
 
     def get_context_data(self, **kwargs):
         """Insert the form into the context dict."""

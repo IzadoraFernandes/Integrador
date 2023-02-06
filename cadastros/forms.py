@@ -14,7 +14,8 @@ class CadastrarReservaModelForm(forms.ModelForm):
             'descricao',
             'data',
             'horario',
-            'sala'
+            'sala',
+            'nome'
         ]
 
         widgets = {
@@ -61,20 +62,19 @@ class CadastrarSalaModelForm(forms.ModelForm):
             'placeholder': 'Ex: Laboratório de Informática III',
             'class': 'form-control'
         }),
-            'numero': forms.TextInput(attrs={
+            'numero': forms.NumberInput(attrs={
                 'class': 'form-control'
             }),
-            'bloco': forms.TextInput(attrs={
-                'placeholder': 'Ex: 01',
+            'bloco': forms.Select(attrs={
                 'class': 'form-control'
             }),
             'descricao': forms.Textarea(attrs={
                 'class': 'form-control'
             }),
-            'capacidade': forms.TextInput(attrs={
+            'capacidade': forms.NumberInput(attrs={
                 'class': 'form-control'
             }),
-            'tipo': forms.TextInput(attrs={
+            'tipo': forms.Select(attrs={
                 'class': 'form-control'
             }),
 
