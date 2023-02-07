@@ -15,7 +15,6 @@ class CadastrarReservaModelForm(forms.ModelForm):
             'data',
             'horario',
             'sala',
-            'nome'
         ]
 
         widgets = {
@@ -32,10 +31,6 @@ class CadastrarReservaModelForm(forms.ModelForm):
                 'placeholder': 'Selecione a opção desejada',
                 'class': 'form-control'
 
-            }),
-            'nome': forms.TextInput(attrs={
-                'placeholder': 'Seu nome completo',
-                'class': 'form-control'
             }),
             'descricao': forms.Textarea(attrs={
                 'placeholder': 'Anotações',

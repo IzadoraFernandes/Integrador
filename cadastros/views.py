@@ -40,10 +40,6 @@ class CadastrarReservaView(CreateView):  # GroupRequiredMixin
         else:
             print('Não')"""
 
-    
-
-
-
 class ReservaListView(ListView):  # GroupRequiredMixin
     model = Reserva
     #group_required = u"Professores"

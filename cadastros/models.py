@@ -54,25 +54,11 @@ class Reserva(models.Model):
         ('21:25 - 22:10', '21:25 - 22:10'),
     )
 
-    #group_required = u"Professores"
-
-    
-    """def validar_dia(value):
-        today = date.today()
-        weekday = date.fromisoformat(f'{value}').weekday()
-
-        if value < today: 
-            raise('Não é possivel escolher um data passada.') #colocar modal
-        if (weekday == 5) or (weekday == 6):
-            raise('Escolha um dia útil da semana.') #seg a sex"""
-
-    descricao = models.TextField(max_length=100, verbose_name="Descrição", blank=True)
-    #data = models.DateField(blank='False', null='False')
+    descricao = models.TextField(max_length=100, verbose_name="Descrição", blank=True)   
     data = models.DateField(help_text="Insira uma data para agenda")
     horario = models.CharField(max_length=15, choices=HORARIOS)
     sala = models.ForeignKey(Sala, on_delete=models.CASCADE)
     #usuario = models.ForeignKey(CustomUser, on_delete= models.CASCADE)
-    nome = models.TextField(max_length=50, verbose_name="Nome")
     def __str__(self):
         return "{}".format(self.data)
 
