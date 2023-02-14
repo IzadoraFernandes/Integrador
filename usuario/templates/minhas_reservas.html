@@ -85,6 +85,18 @@
                 </div>
                 {% endfor %}
             </section>
+            <div>
+                {% if page_obj.has_previous %}
+                <a href="?page={{page_obj.previous_page_number}}">
+                    <h2>Voltar </h2>
+                </a>
+                {%endif%}
+    
+                {% if page_obj.has_next %}
+                <a href="?page={{page_obj.next_page_number}}">
+                    <h1>Próximo </h1></a>
+                {%endif%}
+            </div>
         </main>
 
         {%endblock%}

@@ -1,7 +1,6 @@
 from django.shortcuts import render
-from django.views.generic import CreateView, DeleteView, UpdateView, ListView
+from django.views.generic import CreateView, DeleteView, UpdateView, ListView, DetailView
 from cadastros.models import Reserva, Sala
-from django.views.generic import DeleteView
 
 
 def index(request):
@@ -13,7 +12,7 @@ def agenda(request):
 class ReservaSalaListView(ListView):
     model = Reserva
     queryset = Reserva.objects.all()
-    template_name = 'agenda.html'
+    template_name = 'lista_reservas.html'
 
     def get(self, request, *args, **kwargs):
         self.object_list = self.get_queryset()

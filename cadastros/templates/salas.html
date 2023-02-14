@@ -55,7 +55,7 @@
 
                 <div class="card-body">
                     <ul style="list-style: none; align-items: center; justify-content: center;">
-                        <a href="{% url 'agenda' %}" style="color: black !important;">
+                        <a href="{% url 'reservas-sala' object.id %}" style="color: black !important;">
                             <h5 class="card-title">Sala</h5>
                             <li>{{object.numero}} - {{object.nome}}</li>
                         </a>
@@ -63,7 +63,7 @@
                 </div>
                 <div class="card-body">
                     <ul style="list-style: none;">
-                        <a href="{% url 'agenda' %}" style="color: black !important;">
+                        <a href="{% url 'reservas-sala' object.id %}" style="color: black !important;">
                             <h5 class="card-title">Bloco</h5>
                             <li>{{object.bloco}}</li>
                         </a>
@@ -82,16 +82,26 @@
 
             </div>
             {%endfor%}
+            <!-- <div>
+            {% if page_obj.has_previous %}
+            <a href="?page={{page_obj.previous_page_number}}">
+                <h2>Voltar </h2>
+            </a>
+            {%endif%}
 
+            {% if page_obj.has_next %}
+            <a href="?page={{page_obj.next_page_number}}">
+                <h1>Próximo </h1></a>
+            {%endif%}
+        </div> -->
+        
+        
         </section>
     </main>
     {%endblock%}
 
 
 </body>
-
-
-
 
 {%else%}
 <h1> Você não está autenticado!</h1>

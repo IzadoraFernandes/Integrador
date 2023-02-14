@@ -7,13 +7,11 @@ from usuario.models import CustomUser
 from django.shortcuts import render, HttpResponseRedirect, get_object_or_404
 from utilits.test import test
 from datetime import date
+from django.core.paginator import Paginator
 
-#from braces.views import GroupRequiredMixin
 
-
-class CadastrarReservaView(CreateView):  # GroupRequiredMixin
+class CadastrarReservaView(CreateView):
     model = Reserva
-    #group_required = u"Professores"
     form_class = CadastrarReservaModelForm
     success_url = reverse_lazy('minhas_reservas')
     template_name = 'cadastrar_reserva.html'
@@ -40,12 +38,11 @@ class CadastrarReservaView(CreateView):  # GroupRequiredMixin
         else:
             print('Não')"""
 
-class ReservaListView(ListView):  # GroupRequiredMixin
+class ReservaListView(ListView):  
     model = Reserva
-    #group_required = u"Professores"
     template_name = 'minhas_reservas.html'
     allow_empty = True
-
+    paginate_by = 1
 
 class ReservaUpdateView(UpdateView):
     model = Reserva
@@ -76,7 +73,6 @@ class ReservaDeleteView(DeleteView):
 
 class CadastrarSalaView(CreateView):
     model = Sala
-    #group_required = u"Coapac"
     form_class = CadastrarSalaModelForm
     success_url = reverse_lazy('salas')
     template_name = 'cadastrar_sala.html'
@@ -87,6 +83,7 @@ class SalasListView(ListView):
     queryset = Sala.objects.all()
     template_name = 'salas.html'
     allow_empty = True
+    paginate_by = 10
 
 
 class SalasUpdateView(UpdateView):

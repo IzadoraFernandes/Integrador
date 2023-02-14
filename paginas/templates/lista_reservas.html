@@ -1,0 +1,119 @@
+{% extends 'modelo.html' %}
+
+{%load static%}
+
+{%block titulo %}
+<title>Reservas cadastradas</title>
+{%endblock%}
+
+{%block css%}
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+{%endblock%}
+
+{% if request.user.is_authenticated %}
+{% block conteudo%}
+
+<body>
+
+    <nav>
+        <div class="barranav">
+
+            <div class="linknav">
+                <div class="nav justify-content-end">
+                    <div class="nav-item">
+                        <a class="nav-link" href="{% url 'salas' %}">Salas</a>
+                    </div>
+                    <div class="nav-item">
+                        <a class="nav-link" href="{% url 'cadastrar_reserva' %}">Adicionar reservas</a>
+                    </div>
+                    <div class="nav-item">
+                        <a class="nav-link" href="{% url 'login' %}">Sair</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <header>
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col">
+                    <br>
+                    <h1>Reservas Cadastradas</h1>
+                    <p>{{ sala.nome }} - {{sala.numero}} - capacidade: {{sala.capacidade}}</p>
+                </div>
+                <div class="col">
+                    <img src="{% static 'img/banner_reserva.gif' %}" width="80%">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <body>
+        <main>
+            <section class="container">
+
+                {% for object in reservas%}
+                
+                <div class="card mb-3"
+                    style="max-width: 80rem; flex-direction: row; display: flex; justify-content: space-between">
+
+                    <div class="card-body" style="padding: 10px;">
+                        <ul style="list-style: none;">
+                            <h5 class="card-title">Laboratório</h5>
+                            <li>{{object.sala.numero}} - {{object.sala.nome}}</li>
+                        </ul>
+                    </div>
+
+                    <div class="card-body">
+                        <ul style="list-style: none;">
+                            <h5 class="card-title">Data e Horário</h5>
+                            <li>{{ object.data}} - {{ object.horario}}</li>
+                        </ul>
+                    </div>
+
+                    <div class="card-body"><br>
+                        <a href="{% url 'update-reserva' object.id %}">
+                            <img src="{% static 'img/lapis.preto.png' %}">
+                        </a>
+
+                        <a href="{% url 'delete-reserva' object.id %}">
+                            <img src="{% static 'img/lixeira.preto.png' %}">
+                        </a>
+                    </div>
+
+                </div>
+                {% endfor %}
+            </section>
+            <div>
+                {% if page_obj.has_previous %}
+                <a href="?page={{page_obj.previous_page_number}}">
+                    <h2>Voltar </h2>
+                </a>
+                {%endif%}
+    
+                {% if page_obj.has_next %}
+                <a href="?page={{page_obj.next_page_number}}">
+                    <h1>Próximo </h1></a>
+                {%endif%}
+            </div>
+        </main>
+
+        {%endblock%}
+
+    </body>
+
+
+    {%else%}
+    <h1> Você não está autenticado!</h1>
+    <h4>Por favor faça login ou cadastre-se para ter acesso.</h4>
+
+    <a href="{% url 'login' %}"> Login</a>
+    <a href="{% url 'register' %}"> Cadastro</a>
+    {% endif %}
+    <!-- JavaScript Bundle with Popper -->
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/popper.min.js' %}"></script>
+
+    </html>

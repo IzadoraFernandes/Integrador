@@ -53,12 +53,22 @@ class Reserva(models.Model):
         ('20:40 - 21:25', '20:40 - 21:25'),
         ('21:25 - 22:10', '21:25 - 22:10'),
     )
+    def validar_dia(value):
+        today = date.today()
+        weekday = date.fromisoformat(f'{value}').weekday()
 
+        if value < today:
+            raise ValidationError('Não é possivel escolher um data atrasada.')
+        if (weekday == 5) or (weekday == 6):
+            raise ValidationError('Escolha um dia útil da semana.')
+        
     descricao = models.TextField(max_length=100, verbose_name="Descrição", blank=True)   
-    data = models.DateField(help_text="Insira uma data para agenda")
+    data = models.DateField(help_text="Insira uma data para agenda", validators=[validar_dia])
     horario = models.CharField(max_length=15, choices=HORARIOS)
     sala = models.ForeignKey(Sala, on_delete=models.CASCADE)
     #usuario = models.ForeignKey(CustomUser, on_delete= models.CASCADE)
+
+    
     def __str__(self):
         return "{}".format(self.data)
 
