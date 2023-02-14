@@ -83,7 +83,7 @@ class SalasListView(ListView):
     queryset = Sala.objects.all()
     template_name = 'salas.html'
     allow_empty = True
-    paginate_by = 10
+    paginate_by = 2
 
 
 class SalasUpdateView(UpdateView):

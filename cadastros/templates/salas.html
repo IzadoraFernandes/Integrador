@@ -82,18 +82,38 @@
 
             </div>
             {%endfor%}
-            <!-- <div>
-            {% if page_obj.has_previous %}
-            <a href="?page={{page_obj.previous_page_number}}">
-                <h2>Voltar </h2>
-            </a>
-            {%endif%}
 
-            {% if page_obj.has_next %}
-            <a href="?page={{page_obj.next_page_number}}">
-                <h1>Próximo </h1></a>
-            {%endif%}
-        </div> -->
+            <!-- <div>
+                {% if page_obj.has_previous %}
+                <a href="?page={{page_obj.previous_page_number}}">
+                    <h2>Voltar </h2>
+                </a>
+                {%endif%}
+    
+                {% if page_obj.has_next %}
+                <a href="?page={{page_obj.next_page_number}}">
+                    <h1>Próximo </h1></a>
+                {%endif%}
+            </div> -->
+
+            <div style="background-color: black;">
+                <span>
+                    
+                    {% if page_obj.has_previous %}
+                        <a href="?page=1">&laquo; Primeiro</a>
+                        <a href="?page={{ page_obj.previous_page_number }}">Anterior</a>
+                    {% endif %}
+                    
+                    <span>
+                        Page {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}.
+                    </span>
+            
+                    {% if page_obj.has_next %}
+                        <a href="?page={{ page_obj.next_page_number }}">Próximo</a>
+                        <a href="?page={{ page_obj.paginator.num_pages }}"></a>Última &raquo;</a>
+                    {% endif %}
+                </span>
+            </div>
         
         
         </section>

@@ -6,7 +6,12 @@ def test():
 
     horarioMarcados = []
     horariosDisponiveis = []
+    data = []
+    local = []
     print("tttt"*50)
+
+    
+
     for i in Reserva.objects.all():
         horarioMarcados.append((i.horario, i.horario))
 
