@@ -53,7 +53,7 @@
         <main>
             <section class="container">
 
-                {% for object in object_list%}
+                {% for object in reservas%}
                 
                 <div class="card mb-3"
                     style="max-width: 80rem; flex-direction: row; display: flex; justify-content: space-between">
@@ -61,7 +61,7 @@
                     <div class="card-body" style="padding: 10px;">
                         <ul style="list-style: none;">
                             <h5 class="card-title">Laboratório</h5>
-                            <li>{{object.sala.numero}} - {{object.sala.nome}}</li>
+                            <li>{{object.user}} - {{object.sala.nome}}</li>
                         </ul>
                     </div>
 

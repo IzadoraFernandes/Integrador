@@ -6,13 +6,13 @@ from .models import CustomUser
 from django.contrib import messages
 from django.views.generic import ListView
 from cadastros.models import Reserva
-#from braces.views import GroupRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from django.contrib.auth.models import Group
 from django.shortcuts import get_object_or_404
 
-class CreateUserView(CreateView):
-    form_class = CustomUserCreateForm
+class CreateUserView(LoginRequiredMixin, CreateView):
+    form_class = CustomUserCreateForm()
     success_url = reverse_lazy('login')
     template_name = 'cadastrar_usuario.html'
     model = CustomUser
@@ -31,12 +31,13 @@ def login(request):
     return render(request, 'login.html')
 
 
-class MinhasReservasView(ListView):
+class MinhasReservasView(LoginRequiredMixin, ListView):
     model = Reserva
     #group_required = u"Professores"
     #context_object_name = 'minhas_reservas'
     queryset = Reserva.objects.all()
     paginate_by = 10
+    #allow_empty = True
     template_name = 'minhas_reservas.html'
 
 

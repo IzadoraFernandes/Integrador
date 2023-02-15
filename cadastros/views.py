@@ -8,9 +8,9 @@ from django.shortcuts import render, HttpResponseRedirect, get_object_or_404
 from utilits.test import test
 from datetime import date
 from django.core.paginator import Paginator
+from django.contrib.auth.mixins import LoginRequiredMixin
 
-
-class CadastrarReservaView(CreateView):
+class CadastrarReservaView(LoginRequiredMixin, CreateView):
     model = Reserva
     form_class = CadastrarReservaModelForm
     success_url = reverse_lazy('minhas_reservas')
@@ -19,45 +19,26 @@ class CadastrarReservaView(CreateView):
     def get(self, request):
         salas = Sala.objects.all()
         return render(request, 'cadastrar_reserva.html', {'form': self.get_form(), 'salinhas': salas})
-
-    """def form_valid(self, form):
-        # Define o usuário como usuário logado
-        form.instance.usuario = self.request.user
-        url = super().form_valid(form)
-        # código a fazer depois de salvar objeto no banco
-        #self.object.atributo = “algo”
-        # Salva o objeto novamente
-        self.object.save()
-        return url"""
-
-    """def __init__(self, user=None, *args, **kwargs):
-        super(CustomUser, self).__init__(*args, **kwargs)
-        # my_field = MyModel.objects.filter(user=user)
-        if user.is_authenticated:
-            print(user)
-        else:
-            print('Não')"""
-
-class ReservaListView(ListView):  
+        
+class ReservaListView(LoginRequiredMixin, ListView):  
     model = Reserva
     template_name = 'minhas_reservas.html'
     allow_empty = True
     paginate_by = 1
 
-class ReservaUpdateView(UpdateView):
+class ReservaUpdateView(LoginRequiredMixin, UpdateView):
     model = Reserva
     form_class = CadastrarReservaModelForm
     template_name = 'cadastrar_reserva.html'
     success_url = reverse_lazy('minhas_reservas')
 
     # Altera a query para buscar o objeto do usuário logado
-    '''def get_object(self, queryset=None):
+    """def get_object(self, queryset=None):
         self.object = get_object_or_404(
             Reserva, pk=self.kwargs['pk'], usuario=self.request.user)
-        return self.object'''
+        return self.object"""
 
     def get_context_data(self, **kwargs):
-        """Insert the form into the context dict."""
         salas = Sala.objects.all()
         kwargs["salinhas"] = salas
         if "form" not in kwargs:
@@ -65,20 +46,20 @@ class ReservaUpdateView(UpdateView):
         return super().get_context_data(**kwargs)
 
 
-class ReservaDeleteView(DeleteView):
+class ReservaDeleteView(LoginRequiredMixin, DeleteView):
     model = Reserva
     template_name = 'delete_reserva.html'
     success_url = reverse_lazy('minhas_reservas')
 
 
-class CadastrarSalaView(CreateView):
+class CadastrarSalaView(LoginRequiredMixin, CreateView):
     model = Sala
     form_class = CadastrarSalaModelForm
     success_url = reverse_lazy('salas')
     template_name = 'cadastrar_sala.html'
 
 
-class SalasListView(ListView):
+class SalasListView(LoginRequiredMixin, ListView):
     model = Sala
     queryset = Sala.objects.all()
     template_name = 'salas.html'
@@ -86,14 +67,14 @@ class SalasListView(ListView):
     paginate_by = 2
 
 
-class SalasUpdateView(UpdateView):
+class SalasUpdateView(LoginRequiredMixin, UpdateView):
     model = Sala
     form_class = CadastrarSalaModelForm
     template_name = 'cadastrar_sala.html'
     success_url = reverse_lazy('salas')
 
 
-class SalasDeleteView(DeleteView):
+class SalasDeleteView(LoginRequiredMixin, DeleteView):
     model = Sala
     template_name = 'delete_sala.html'
     success_url = reverse_lazy('salas')

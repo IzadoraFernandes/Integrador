@@ -1,4 +1,4 @@
-from cadastros.models import Reserva
+from cadastros.models import Reserva, Sala
 from pprint import pprint
 
 
@@ -10,7 +10,7 @@ def test():
     local = []
     print("tttt"*50)
 
-    
+    #for a in Sala.objects.filter(id = Sala.id):
 
     for i in Reserva.objects.all():
         horarioMarcados.append((i.horario, i.horario))

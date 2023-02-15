@@ -42,6 +42,14 @@ class CustomUserCreateForm(UserCreationForm):
                 user.save()
 
             return user
+        
+        """def __init__(self, user=None, *args, **kwargs):
+            super(CustomUser,self).__init__(*args, **kwargs)
+            if user:
+                if user.is_authenticated:
+                    print(user)
+                else:
+                    print('Não autenticado')"""
 
 
 class CustomUserChangeForm(UserChangeForm):

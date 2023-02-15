@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.views.generic import CreateView, DeleteView, UpdateView, ListView, DetailView
 from cadastros.models import Reserva, Sala
 from django.shortcuts import get_object_or_404
-
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 def index(request):
     return render(request, 'index.html')
@@ -10,10 +10,11 @@ def index(request):
 def agenda(request):
     return render(request, 'agenda.html')
 
-class ReservaSalaListView(ListView):
+class ReservaSalaListView(LoginRequiredMixin, ListView):
     model = Reserva
     queryset = Reserva.objects.all()
     template_name = 'lista_reservas.html'
+    #allow_empty = True
 
     """ def get_context_data(self, **kwargs):
         context = super(ReservaSalaListView, self).get_context_data(**kwargs)
