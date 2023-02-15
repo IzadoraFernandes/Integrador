@@ -6,7 +6,7 @@ from usuario.models import CustomUser
 from utilits.test import test
 
 class CadastrarReservaModelForm(forms.ModelForm):
-    horario = forms.ChoiceField(choices=test())
+    #horario = forms.ChoiceField(choices=test())
 
     class Meta:
         model = Reserva

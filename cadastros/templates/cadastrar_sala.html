@@ -12,7 +12,7 @@
 
 {% if request.user.is_authenticated %}
 {%block conteudo%}
-<body>
+
    
     <nav>
         <ul class="nav justify-content-end"
@@ -23,7 +23,7 @@
         </ul>
     </nav>
 
-
+<main> 
     <form method="POST">{% csrf_token %}
         <fieldset>
             <div id="login-box">
@@ -81,8 +81,11 @@
 
         
     </form>
-  
-</body>
+    <br>
+    <br>
+   <br>
+</main>
+
   {%endblock%}
 
   {%else%}

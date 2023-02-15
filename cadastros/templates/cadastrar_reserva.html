@@ -12,16 +12,19 @@
 
 {% if request.user.is_authenticated %}
 {%block conteudo%}
-<body>
+ <header> 
+
     <nav>
         <ul class="nav justify-content-end"
         style="background-color: #2095ff;">
             <li class="nav-item">
-                <a class="nav-link" href="{% url 'salas' %}">Voltar</a>
+                <a class="nav-link" href="{% url 'minhas_reservas' %}">Voltar</a>
             </li>
         </ul>
     </nav>
+</header>
    
+<main>
 
     <form method="post">{% csrf_token %}
         <fieldset>
@@ -62,12 +65,18 @@
                 <div class="right">
                     <img src="{% static 'img/banner_de_formularios.png' %}" width="100%"><br>
                 </div>
-
+                
+                <br>
             </div>
         </fieldset>
 
     </form>
-</body>
+    <br>
+    <br>
+   <br>
+   
+</main>
+
 {% endblock %}
 
 {%else%}

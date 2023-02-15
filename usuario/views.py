@@ -11,11 +11,12 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.models import Group
 from django.shortcuts import get_object_or_404
 
-class CreateUserView(LoginRequiredMixin, CreateView):
-    form_class = CustomUserCreateForm()
+class CreateUserView(CreateView):
+    form_class = CustomUserCreateForm
     success_url = reverse_lazy('login')
-    template_name = 'cadastrar_usuario.html'
     model = CustomUser
+    template_name = 'cadastrar_usuario.html'
+    
 
     def form_valid(self, form):
         response = super().form_valid(form)
@@ -36,11 +37,11 @@ class MinhasReservasView(LoginRequiredMixin, ListView):
     #group_required = u"Professores"
     #context_object_name = 'minhas_reservas'
     queryset = Reserva.objects.all()
-    paginate_by = 10
+    paginate_by = 3
     #allow_empty = True
     template_name = 'minhas_reservas.html'
 
-
+    
 def usuarios(request):
     return render(request, 'usuarios.html')
 

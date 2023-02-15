@@ -7,18 +7,78 @@
 {%endblock%}
 
 {%block css%}
-<link rel="stylesheet" href="{% static 'css/index.css' %}">
+<link rel="stylesheet" href="{% static 'css/agenda.css' %}">
 {%endblock%}
 
 {% if request.user.is_authenticated %}
 {% block conteudo%}
+
+<style>
+  header {
+    display: flex;
+    min-height: 10vh;
+    justify-content: space-around;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 100px;
+    margin-left: 350px;
+    margin-right: 10px;
+    margin-bottom: 100px;
+}
+
+.container .test {
+  width: 800px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  border: none;
+ 
+}
+
+.container .card .face {
+  width: 150px;
+  height: 150px;
+}
+
+.container .card .face.face1 {
+  position: relative;
+  background: #2095ff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: translateY(25px);
+  margin: 15px 15px;
+  border-radius: 10px;
+}
+
+.container .card:hover .face.face.face1 {
+  transform: translateY(0);
+  box-shadow:
+      inset 30px 0 80px #CE778B,
+      inset -70px 0 600px #2095ff,
+      inset 30px 0 300px #2095ff,
+      inset -10px 0 800px #CE778B;
+}
+
+.container .card .face.face1 .content {
+ 
+  transition: 2s;
+  text-align: center;
+  font-size: 1.5em;
+  color: white;
+}
+</style>
 
 <body>
 
     <nav>
         <div class="barranav">
 
+            <div>
+                <img class="imgnav" src="{% static 'img/Logo.png' %}" width="15%">
+            </div>
             <div class="linknav">
+
                 <div class="nav justify-content-end">
                     <div class="nav-item">
                         <a class="nav-link" href="{% url 'salas' %}">Salas</a>
@@ -38,22 +98,48 @@
     </nav>
 
     <header>
+        
+        <div>
+            <h1 style="font-size: 56px;">Reservas Cadastradas</h1>
+            <br><h2 style="font-size: 35px;"><br>Sala: </h2>
+            <h2>{{ sala.nome }}</h2>
+        </div>
+
         <div class="container">
-            <div class="row align-items-center">
-                <div class="col">
-                    <br>
-                    <h1>Reservas Cadastradas</h1> <br>
-                    <h3>Sala: {{ sala.nome }}</h3> 
-                    <h3>N: {{sala.numero}}</h3> 
-                    <h3>Capacidade: {{sala.capacidade}}</h3>
-                    <h3>Bloco: {{sala.bloco}}</h3>
-                    <h3>Tipo: {{sala.tipo}}</h3>
+            <div class="test">
+                
+                <div class="card">
+                    <div class="face face1">
+                        <div class="content">
+                            <h1>{{sala.numero}}</h1><br>
+                            <h4>Número</h4>
+                        </div>
+                    </div>
                 </div>
-                <div class="col">
-                    <img src="{% static 'img/banner_reserva.gif' %}" width="80%">
+                <div class="card">
+                    <div class="face face1">
+                        <div class="content">
+                            <h1>{{sala.capacidade}}</h1><br>
+                            <h4>Capacidade</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="face face1">
+                        <div class="content">
+                            <h3>{{sala.bloco}}</h3><br>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="face face1">
+                        <div class="content">
+                            <h4>{{sala.tipo}}</h4><br>
+                            <h4>Tipo</h4>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
     </header>
 
     <body>
@@ -91,6 +177,7 @@
 
                 </div>
                 {% endfor %}
+                
             </section>
             <div>
                 {% if page_obj.has_previous %}
